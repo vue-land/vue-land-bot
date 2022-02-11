@@ -1,0 +1,9 @@
+{
+  "name": "vue-land-bot",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm"
+  }
+}
