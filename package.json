@@ -6,9 +6,11 @@
   "scripts": {
     "build": "tsup src/index.ts --dts --format esm --target node16",
     "start": "node ./dist/index.mjs",
+    "format": "prettier --write --parser typescript \"src/**/*.ts\"",
     "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
+    "prettier": "^2.5.1",
     "tsup": "^5.11.13",
     "typescript": "^4.5.5"
   }
