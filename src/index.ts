@@ -2,6 +2,7 @@ import { fetchLogChannel } from './api/channels'
 import { BotBuilder } from './core/bot'
 import { logger } from './core/utils'
 import deletedMessageLog from './features/deleted-message-log'
+import jobsChannel from './features/jobs-channel'
 import ping from './features/ping'
 import statistics from './features/statistics'
 import { getConfig } from './fs/config'
@@ -20,6 +21,7 @@ const init = async () => {
 
   const bot = await builder
     .use(deletedMessageLog)
+    .use(jobsChannel)
     .use(ping)
     .use(statistics)
     .init()
