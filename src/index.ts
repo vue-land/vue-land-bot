@@ -4,6 +4,7 @@ import { logger } from './core/utils'
 import deletedMessageLog from './features/deleted-message-log'
 import ping from './features/ping'
 import statistics from './features/statistics'
+import updateMessage from './features/update-message'
 import { getConfig } from './fs/config'
 
 const init = async () => {
@@ -22,6 +23,7 @@ const init = async () => {
     .use(deletedMessageLog)
     .use(ping)
     .use(statistics)
+    .use(updateMessage)
     .init()
 
   await fetchLogChannel(bot)

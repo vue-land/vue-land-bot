@@ -4,7 +4,9 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build": "tsup src/index.ts --dts --format esm --target node16",
+    "build": "pnpm run build:copy && pnpm run build:ts",
+    "build:copy": "copyfiles -u 1 \"src/assets/**\" dist",
+    "build:ts": "tsup src/index.ts --dts --format esm --target node16",
     "start": "node ./dist/index.mjs",
     "format": "prettier --write --parser typescript \"src/**/*.ts\"",
     "preinstall": "npx only-allow pnpm"
@@ -18,6 +20,7 @@
     ]
   },
   "devDependencies": {
+    "copyfiles": "^2.4.1",
     "lint-staged": "^12.3.3",
     "prettier": "^2.5.1",
     "simple-git-hooks": "^2.7.0",
