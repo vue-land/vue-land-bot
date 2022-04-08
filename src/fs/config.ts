@@ -20,7 +20,9 @@ export function getConfig(): Config | null {
     'APPLICATION_ID',
     'LOG_CHANNEL_ID',
     'MODERATOR_ROLES',
-    'TRUSTED_ROLES'
+    'TRUSTED_ROLES',
+    'REPORT_SPAM_CHANNEL_ID',
+    'BLOCKED_ROLE'
   ]
 
   let fail = false

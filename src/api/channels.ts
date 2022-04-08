@@ -27,6 +27,32 @@ export async function fetchLogChannel(bot: Bot): Promise<TextChannel> {
   return channel
 }
 
+export async function fetchReportSpamChannel(bot: Bot): Promise<TextChannel> {
+  const reportSpamChannelId = bot.config.REPORT_SPAM_CHANNEL_ID
+  const channel = (await bot.client.channels.fetch(
+    reportSpamChannelId
+  )) as TextChannel
+
+  if (!channel) {
+    throw new Error(`There is no channel with the ID ${reportSpamChannelId}`)
+  }
+
+  // Ignore anything that isn't a text channel
+  if (channel.type !== 'GUILD_TEXT') {
+    throw new Error(
+      `The spam reporting channel, ${reportSpamChannelId}, must be a text channel`
+    )
+  }
+
+  if (!channel.viewable) {
+    throw new Error(
+      `The spam reporting channel, ${reportSpamChannelId}, is not viewable`
+    )
+  }
+
+  return channel
+}
+
 export async function loadTextChannels(bot: Bot) {
   return loadTextChannelsForGuild(bot.guild)
 }
