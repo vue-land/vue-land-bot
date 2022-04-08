@@ -7,6 +7,7 @@ import jobsChannel from './features/jobs-channel'
 import ping from './features/ping'
 import spamDetection from './features/spam-detection'
 import statistics from './features/statistics'
+import updateMessage from './features/update-message'
 import { getConfig } from './fs/config'
 
 const init = async () => {
@@ -28,6 +29,7 @@ const init = async () => {
     .use(ping)
     .use(spamDetection)
     .use(statistics)
+    .use(updateMessage)
     .init()
 
   await fetchLogChannel(bot)
