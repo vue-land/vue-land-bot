@@ -67,10 +67,10 @@ const postLogMessage = async (
     },
     title: reason,
     description: `
-			${messageList.join('\n')}
-			-----
-			${message.content}
-		`,
+      ${messageList.join('\n')}
+      -----
+      ${message.content}
+    `,
     timestamp: new Date(),
     footer: {
       text: `User ID: ${message.author.id}`

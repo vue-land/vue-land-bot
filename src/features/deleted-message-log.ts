@@ -51,9 +51,9 @@ const logDeletedMessages = async (
         icon_url: author?.displayAvatarURL()
       },
       description: `
-				**Message from <@${author?.id}> deleted in** <#${message.channel.id}>
-				${message.content}
-			`
+        **Message from <@${author?.id}> deleted in** <#${message.channel.id}>
+        ${message.content}
+      `
     })
   } else {
     const joinedMessages = messages
@@ -61,9 +61,9 @@ const logDeletedMessages = async (
       .join('\n')
 
     embed.description = `
-			**${count}** messages deleted in <#${message.channel.id}>
-			${joinedMessages}
-		`
+      **${count}** messages deleted in <#${message.channel.id}>
+      ${joinedMessages}
+    `
   }
 
   await deletedMessagesThread.send({ embeds: [embed] })
