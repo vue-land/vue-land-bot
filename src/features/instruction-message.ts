@@ -82,6 +82,10 @@ const createInstructionMessage = (channelName: string, messageText: string) => {
 
 const handlers = [
   createInstructionMessage(
+    'admin-requests',
+    ':pushpin: If you want to request a new channel, please read [the pinned message](https://discord.com/channels/325477692906536972/325581214910251011/934292005813624952) first. Thanks!'
+  ),
+  createInstructionMessage(
     'jobs',
     ':pushpin: Please read [the pinned message](https://discord.com/channels/325477692906536972/325675277046906881/938461542775685140) before posting in this channel'
   ),
