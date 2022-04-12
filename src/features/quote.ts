@@ -71,7 +71,13 @@ export default command({
         }):**\n\n${messageContent}`
       }
 
-      await interaction.reply({ content, embeds: [embed] })
+      await interaction.reply({
+        content,
+        embeds: [embed],
+        allowedMentions: {
+          parse: ['users']
+        }
+      })
     } else {
       await interaction.reply({
         content: `Failed. The message could not be found. Quoting only supports these channels:\n${channelsCache
