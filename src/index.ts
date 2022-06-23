@@ -1,6 +1,7 @@
 import { fetchLogChannel, fetchReportSpamChannel } from './api/channels'
 import { BotBuilder } from './core/bot'
 import { logger } from './core/utils'
+import autoCreateThreads from './features/auto-create-threads'
 import checkDiscordInvites from './features/check-discord-invites'
 import deletedMessageLog from './features/deleted-message-log'
 import instructionMessage from './features/instruction-message'
@@ -25,6 +26,7 @@ const init = async () => {
   const builder = new BotBuilder(config)
 
   const bot = await builder
+    .use(autoCreateThreads)
     .use(checkDiscordInvites)
     .use(deletedMessageLog)
     .use(instructionMessage)
