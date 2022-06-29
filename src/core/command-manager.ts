@@ -1,10 +1,10 @@
 import { REST } from '@discordjs/rest'
 import { APIApplicationCommand, Routes } from 'discord-api-types/v9'
 import {
-  ApplicationCommandPermissionData,
   Collection,
   CommandInteraction,
   Interaction,
+  Permissions,
   Role
 } from 'discord.js'
 import { getModeratorRoles, getTrustedRoles } from '../api/roles'
@@ -91,7 +91,7 @@ export default class CommandManager {
 
     const commands = await this.saveCommands(bot)
 
-    await this.savePermissions(bot, commands)
+    await this.checkPermissions(bot, commands)
 
     bot.client.on('interactionCreate', async (interaction: Interaction) => {
       await this.run(bot, interaction)
@@ -110,7 +110,19 @@ export default class CommandManager {
         name,
         description,
         options,
-        default_permission: roles === 'everyone'
+
+        // The permissions model doesn't allow us to specify which roles can use a particular command, but we can
+        // specify which general permissions a user must have to be able to use it.
+        default_member_permissions: String(
+          Permissions.FLAGS[
+            // There doesn't seem to be a suitable flag for detecting MVPs, so we treat 'trusted' commands the same as
+            // 'moderators' and rely on the permissions checks to flag any manual corrections that are needed.
+            roles === 'everyone' ? 'SEND_MESSAGES' : 'BAN_MEMBERS'
+          ]
+        ),
+
+        // This is part of the old permissions model and is now deprecated
+        default_permission: false
       }
     })
 
@@ -122,53 +134,66 @@ export default class CommandManager {
     )) as APIApplicationCommand[]
   }
 
-  private async savePermissions(bot: Bot, commands: APIApplicationCommand[]) {
-    const moderatorRoles = await getModeratorRoles(bot)
-    const trustedRoles = await getTrustedRoles(bot)
+  private async checkPermissions(bot: Bot, commands: APIApplicationCommand[]) {
+    // These are command permissions set by the guild admins, overriding the defaults set by the bot
+    const permissionOverrides = await bot.guild.commands.permissions.fetch({})
 
-    const mapRoles = (roles: Role[]) => {
-      const permissions: ApplicationCommandPermissionData[] = roles.map(
-        ({ id }) => ({
-          id,
-          type: 'ROLE',
-          permission: true
-        })
-      )
+    const allRoles = [...(await bot.guild.roles.fetch()).values()]
 
-      const roleNames = roles.map(role => role.name).join(', ')
-
-      return { permissions, roleNames }
+    const roleMap = {
+      everyone: allRoles,
+      moderators: await getModeratorRoles(bot),
+      trusted: await getTrustedRoles(bot)
     }
 
-    const roleToPermissions = {
-      moderators: mapRoles(moderatorRoles),
-      trusted: mapRoles(trustedRoles)
-    }
-
-    const fullPermissions = []
-
-    for (const { id, name } of commands) {
+    for (const { default_member_permissions, id, name } of commands) {
       const command = this.get(name)
 
       if (!command) {
         throw new Error(`Assertion failure: ${name} command is missing`)
       }
 
-      if (command.roles === 'everyone') {
-        logger.log(`  /${command.name} - everyone`)
+      const expectedRolesForCommand = roleMap[command.roles]
+
+      const defaultMemberPermissions = BigInt(default_member_permissions || 0)
+
+      const actualRolesForCommand = allRoles.filter(role => {
+        const overrides = permissionOverrides.get(id)
+
+        if (overrides) {
+          for (const override of overrides) {
+            if (override.type === 'ROLE' && override.id === role.id) {
+              return override.permission
+            }
+          }
+        }
+
+        return (
+          (role.permissions.bitfield & defaultMemberPermissions) ===
+          defaultMemberPermissions
+        )
+      })
+
+      const toRoleNamesString = (roles: Role[]) => {
+        const roleNames = roles.map(role => role.name)
+
+        if (roleNames.includes('@everyone')) {
+          return 'everyone'
+        }
+
+        return roleNames.sort().join(', ')
+      }
+
+      const expectedRoleNames = toRoleNamesString(expectedRolesForCommand)
+      const actualRoleNames = toRoleNamesString(actualRolesForCommand)
+
+      if (expectedRoleNames === actualRoleNames) {
+        logger.log(`  /${command.name} - ${expectedRoleNames}`)
       } else {
-        const { permissions, roleNames } = roleToPermissions[command.roles]
-
-        fullPermissions.push({
-          id,
-          permissions
-        })
-
-        logger.log(`  /${command.name} - ${roleNames}`)
+        logger.warn(
+          `  /${command.name} - actual: ${actualRoleNames}, expected: ${expectedRoleNames}`
+        )
       }
     }
-
-    // Save all permissions in one go, otherwise performance suffers
-    await bot.guild.commands.permissions.set({ fullPermissions })
   }
 }
