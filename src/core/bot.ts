@@ -1,4 +1,5 @@
 import { Awaitable, Client, ClientEvents, Guild, Intents } from 'discord.js'
+import { register } from '../api/deletion-cache'
 import { Command } from './types/command'
 import { Config } from './types/config'
 import CommandManager from './command-manager'
@@ -118,6 +119,8 @@ export class BotBuilder {
       },
       bot
     }
+
+    register(context)
 
     let feature = null
 

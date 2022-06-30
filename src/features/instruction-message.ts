@@ -1,4 +1,5 @@
 import { Message, MessageEmbedOptions, TextChannel } from 'discord.js'
+import { isDeleted } from '../api/deletion-cache'
 import { events } from '../core/feature'
 import { debounce, withErrorLogging } from '../core/utils'
 
@@ -13,7 +14,7 @@ const createInstructionMessage = (channelName: string, messageText: string) => {
     let messageToDelete = lastMessage
     lastMessage = null
 
-    if (messageToDelete && messageToDelete.deleted) {
+    if (messageToDelete && isDeleted(messageToDelete)) {
       messageToDelete = null
     }
 

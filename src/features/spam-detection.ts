@@ -5,6 +5,7 @@ import {
   fetchReportSpamChannel,
   useThread
 } from '../api/channels'
+import { isDeleted } from '../api/deletion-cache'
 import { getTrustedRoles } from '../api/roles'
 import { Bot } from '../core/bot'
 import { feature } from '../core/feature'
@@ -378,7 +379,7 @@ export default feature({
 
       const messagesForUser = recentMessages
         .map(({ message }) => message)
-        .filter(msg => !msg.deleted && msg.author.id === message.author.id)
+        .filter(msg => !isDeleted(msg) && msg.author.id === message.author.id)
 
       for (const rule of rules) {
         // We pass the same message twice as some rules need to compare messages

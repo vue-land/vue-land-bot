@@ -5,6 +5,7 @@ import {
   ThreadAutoArchiveDuration,
   ThreadChannel
 } from 'discord.js'
+import { isDeleted } from './deletion-cache'
 import { Bot } from '../core/bot'
 
 export async function fetchLogChannel(bot: Bot): Promise<TextChannel> {
@@ -75,7 +76,7 @@ const threadCache: Record<string, ThreadChannel> = {}
 export async function getThreadByName(channel: TextChannel, name: string) {
   const thread = threadCache[name]
 
-  if (thread && !thread.deleted) {
+  if (thread && !isDeleted(thread)) {
     return thread
   }
 
