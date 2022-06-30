@@ -21,7 +21,7 @@ For some questions it isn't obvious which channel to use, especially if you don'
 Some tips for finding the best channel...
 
 :one: If your question is about tools then try to ask in one of the `Tools` channels. :tools:
-:two: If you need help with your code then try under `Code Help`.
+:two: If you need help with your code then try under `Code Help`. Pick a channel based on what your question is *about*, not just which libraries you're using.
 :three: If you want to discuss something but don't need help with your code then one of the channels under `Discussions` might be best.
 :four: If you have a question about using a non-Vue library like axios, consider asking in <#708275453193879554> or <#331999220125138944>.
 
@@ -113,15 +113,16 @@ Try to be realistic when asking a question. Questions that need an experienced d
 
 Vue 2:
 
-:small_blue_diamond: Vue: <https://vuejs.org/>
-:small_blue_diamond: Vuex: <https://vuex.vuejs.org/>
-:small_blue_diamond: Vue Router: <https://router.vuejs.org/>
+:small_blue_diamond: Vue: <https://v2.vuejs.org/>
+:small_blue_diamond: Vue Router: <https://v3.router.vuejs.org/>
+:small_blue_diamond: Vuex: <https://v3.vuex.vuejs.org/>
 
 Vue 3:
 
-:small_blue_diamond: Vue: <https://v3.vuejs.org/>
-:small_blue_diamond: Vuex: <https://next.vuex.vuejs.org/>
-:small_blue_diamond: Vue Router: <https://next.router.vuejs.org/>
+:small_blue_diamond: Vue: <https://vuejs.org/>
+:small_blue_diamond: Vue Router: <https://router.vuejs.org/>
+:small_blue_diamond: Pinia: <https://pinia.vuejs.org/>
+:small_blue_diamond: Vuex: <https://vuex.vuejs.org/>
 
 ---
 
