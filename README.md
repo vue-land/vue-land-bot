@@ -2,16 +2,6 @@
 
 This is the source code for the [Vue Land Discord](https://chat.vuejs.org/) bot. It runs on Node.
 
-## Where is all the code???
-
-The `main` branch currently contains minimal code. All the other code is currently in PRs, ready for review.
-
-If you want to see the code with all the features merged in, that's on [the everything branch](https://github.com/vue-land/vue-land-bot/tree/everything).
-
-The basic skeleton for the bot is on the `base` branch. You can [review that PR here](https://github.com/vue-land/vue-land-bot/pull/1).
-
-The other features are all in their own PRs, using the `base` branch as their target. Once the `base` branch is merged the other PRs will be updated to point at `main` instead.
-
 ## Conventions
 
 The bot takes several conventions from [Vue](https://github.com/vuejs/core) and [Vite](https://github.com/vitejs/vite):
