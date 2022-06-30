@@ -122,9 +122,12 @@ const blockFor = (reason: string) => {
 
         const reportSpamChannel = await fetchReportSpamChannel(bot)
 
-        await reportSpamChannel.send(
-          `User <@${member.id}> has been blocked by the spam filter.`
-        )
+        await reportSpamChannel.send({
+          content: `User <@${member.id}> has been blocked by the spam filter.`,
+          allowedMentions: {
+            users: [member.id]
+          }
+        })
       }
     } else {
       logger.warn(
