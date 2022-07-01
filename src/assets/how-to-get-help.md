@@ -51,13 +51,32 @@ If you're having a problem with your code then we'll need to see the code to be 
 
 ---
 
-Please post code as text, not as a screenshot. We need to be able to edit the text to make suggestions. Code blocks should be posted within triple backticks, similar to markdown. e.g.:
+Please post code as text, not as a screenshot. We need to be able to edit the text to make suggestions.
+
+---
+
+Code blocks should be posted within triple backticks, similar to markdown. e.g.:
 
 ```
 ​`​​`​`​js
 // JavaScript code here
 `​​`​`​
 ```
+
+Discord doesn't have dedicated syntax highlighting for `.vue` files, but treating them as `html` is usually close enough:
+
+```
+​`​​`​`​html
+<script setup>
+defineProps(['name'])
+</script>
+<template>
+  <div>{{ name }}</div>
+</template>
+`​​`​`​
+```
+
+---
 
 Tools like JSFiddle, CodeSandbox, CodePen, and the Vue 3 SFC Playground can be used to create runnable examples that demonstrate your problem. These make it much easier for us to see and debug the problem ourselves. Creating a minimal, runnable example like this is also a great way to solve the problem yourself.
 
@@ -80,7 +99,7 @@ Proof-read your question before you post it. Check that you wrote what you inten
 :small_orange_diamond: Can X be integrated with Y?
 :small_orange_diamond: Why am I just getting a white screen?
 
-These aren't proper questions. We can't tell what you really want to know. People won't volunteer to help you without knowing what the problem is. See <https://www.nohello.net/> and <https://dontasktoask.com/> for more details about why.
+These aren't proper questions. We can't tell what you really want to know. People won't volunteer to help you without knowing what the problem is. See <https://www.nohello.net/> and <https://dontasktoask.com/> for more details about why. Instead, please post a question that contains enough information about the problem for us to be able to attempt an answer.
 
 ---
 
