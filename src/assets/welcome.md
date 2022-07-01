@@ -1,11 +1,41 @@
-Welcome to Vue Land - <https://chat.vuejs.org/>
+<:vue:326303429934841856> Welcome to **Vue Land** - <https://chat.vuejs.org/>
 
-This will be a community-driven server so feel free to suggest new text channels, better server names, nice logos, or anything else you think would improve it for everyone. Roles are being created for mods, trusted users, etc. As with all communities, we have a few rules to keep things friendly.
+Nice to have you here!
 
-1. **Respect other users of this server.** We're all on the same team here so let's have fun, share what we know, and hopefully learn something new. No bullying, harassment, racism, or sexism. Censoring yourself with * is also not allowed. Memes included. Generally, just be excellent to each other.
+This is a community-driven server. Feel free to suggest improvements in <#325581214910251011>. As with all communities, we have a few rules to keep things friendly. Please read the <#974201215732830218> before posting.
 
-2. **Use the relevant text channel.** Channels are grouped by category. If you're new here, you might introduce yourself at <#325554169652183040>. If you need help, please try to find a relevant channel, eg: use <#325479491453583372> for vuex questions, otherwise post it in <#325479107012067328>. If you want to share your project, use <#325479248238215168>, etc. If you can't find a relevant channel then put it in <#325477692906536972> or ask admin to create a new text channel.
+If you're new to this server then you might like to start by checking out the following channels:
+:small_blue_diamond: <#325554169652183040>
+:small_blue_diamond: <#505423005929832468>
+:small_blue_diamond: <#854729996312641536>
 
-3. **Don't be afraid to ask.** There's no such thing as a stupid question. We're here to learn and we encourage people to ask questions about anything Vue related. However it would save both you and the others a good amount of time if you format your message correctly and reference a link to codepen.io / codesandbox.io whenever possible.
+---
 
-4. **No spam.** Nobody likes spam so let's keep this server clean and relevant. Duplicated messages and ads might be deleted.
+:busts_in_silhouette: **Roles**
+
+Some users have roles on the server, which are explained below. Keep in mind that everyone here is a volunteer, including those with roles.
+
+Apart from the moderators, please do not attempt to `@` mention roles or the people who have them unless they have offered to help you with your current question.
+
+<@&954766340688867379> - Members of the Vue core team. See <https://vuejs.org/about/team.html>.
+<@&920189061476519946> - The keepers of peace and order. Feel free to ping (or preferably DM) them if there is any issue which requires their attention. Spam can be reported in <#709346617223938068>.
+<@&920216231687127060> - 'Most Valuable Player'. These are people who help out a lot on this server, answering questions and making new users feel welcome.
+<@&954766839798440006> - People who maintain or contribute to important libraries and tools in the Vue ecosystem and beyond.
+<@&954766963073249280> - Those who don't fall into the other categories but have nevertheless made a significant contribution to the Vue community. e.g. through conferences or creating educational material.
+
+---
+
+:link: **Links**
+
+Vue 3:
+
+:small_blue_diamond: Vue: <https://vuejs.org/>
+:small_blue_diamond: Vue Router: <https://router.vuejs.org/>
+:small_blue_diamond: Pinia: <https://pinia.vuejs.org/>
+:small_blue_diamond: Vuex: <https://vuex.vuejs.org/>
+
+Vue 2:
+
+:small_blue_diamond: Vue: <https://v2.vuejs.org/>
+:small_blue_diamond: Vue Router: <https://v3.router.vuejs.org/>
+:small_blue_diamond: Vuex: <https://v3.vuex.vuejs.org/>

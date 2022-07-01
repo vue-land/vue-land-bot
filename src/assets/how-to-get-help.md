@@ -105,25 +105,4 @@ Try to be realistic when asking a question. Questions that need an experienced d
 
 ---
 
-:link: **Links**
-
-:small_blue_diamond: How to Ask: <https://stackoverflow.com/help/how-to-ask>
-:small_blue_diamond: Vue Community: <https://vue-community.org/>
-:small_blue_diamond: Vue CLI: <https://cli.vuejs.org/>
-
-Vue 2:
-
-:small_blue_diamond: Vue: <https://v2.vuejs.org/>
-:small_blue_diamond: Vue Router: <https://v3.router.vuejs.org/>
-:small_blue_diamond: Vuex: <https://v3.vuex.vuejs.org/>
-
-Vue 3:
-
-:small_blue_diamond: Vue: <https://vuejs.org/>
-:small_blue_diamond: Vue Router: <https://router.vuejs.org/>
-:small_blue_diamond: Pinia: <https://pinia.vuejs.org/>
-:small_blue_diamond: Vuex: <https://vuex.vuejs.org/>
-
----
-
 Thanks for reading.

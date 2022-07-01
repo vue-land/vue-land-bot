@@ -5,7 +5,12 @@ import { command } from '../core/feature'
 import { logger } from '../core/utils'
 import { getAsset } from '../fs/assets'
 
-const CHANNEL_NAMES = ['welcome', 'related-discords', 'how-to-get-help']
+const CHANNEL_NAMES = [
+  'welcome',
+  'related-discords',
+  'how-to-get-help',
+  'rules'
+]
 
 export default command({
   name: 'update-message',
