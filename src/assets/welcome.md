@@ -2,7 +2,9 @@
 
 Nice to have you here!
 
-This is a community-driven server. Feel free to suggest improvements in <#325581214910251011>. As with all communities, we have a few rules to keep things friendly. Please read the <#974201215732830218> before posting.
+As with all communities, we have a few rules to keep things friendly. Please read the <#974201215732830218> before posting. Show other people respect and, generally, just be excellent to each other. :guitar:
+
+The people helping out are all volunteers. Please keep that in mind when asking for help. You're much more likely to get help if you follow the advice in <#854729996312641536>.
 
 If you're new to this server then you might like to start by checking out the following channels:
 :small_blue_diamond: <#325554169652183040>
@@ -13,15 +15,19 @@ If you're new to this server then you might like to start by checking out the fo
 
 :busts_in_silhouette: **Roles**
 
-Some users have roles on the server, which are explained below. Keep in mind that everyone here is a volunteer, including those with roles.
-
-Apart from the moderators, please do not attempt to `@` mention roles or the people who have them unless they have offered to help you with your current question.
+The roles on Vue Land are explained below. Apart from the moderators, please do not attempt to `@` mention roles or the people who have them unless they've offered to help you with your current problem.
 
 <@&954766340688867379> - Members of the Vue core team. See <https://vuejs.org/about/team.html>.
 <@&920189061476519946> - The keepers of peace and order. Feel free to ping (or preferably DM) them if there is any issue which requires their attention. Spam can be reported in <#709346617223938068>.
 <@&920216231687127060> - 'Most Valuable Player'. These are people who help out a lot on this server, answering questions and making new users feel welcome.
 <@&954766839798440006> - People who maintain or contribute to important libraries and tools in the Vue ecosystem and beyond.
 <@&954766963073249280> - Those who don't fall into the other categories but have nevertheless made a significant contribution to the Vue community. e.g. through conferences or creating educational material.
+
+---
+
+:wrench: **Requesting changes**
+
+This is a community-driven server. Feel free to suggest improvements in <#325581214910251011>.
 
 ---
 
