@@ -8,6 +8,7 @@ import instructionMessage from './features/instruction-message'
 import jobsChannel from './features/jobs-channel'
 import ping from './features/ping'
 import quote from './features/quote'
+import reactionDeleteInteraction from './features/reaction-delete-interaction'
 import spamDetection from './features/spam-detection'
 import statistics from './features/statistics'
 import updateMessage from './features/update-message'
@@ -33,6 +34,7 @@ const init = async () => {
     .use(jobsChannel)
     .use(ping)
     .use(quote)
+    .use(reactionDeleteInteraction)
     .use(spamDetection)
     .use(statistics)
     .use(updateMessage)
