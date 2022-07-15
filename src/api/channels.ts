@@ -63,7 +63,7 @@ export async function loadTextChannelsForGuild(guild: Guild) {
   const textChannels: BaseGuildTextChannel[] = []
 
   channels.forEach(channel => {
-    if (channel.isText() && channel.viewable) {
+    if (channel.isText() && !channel.isVoice() && channel.viewable) {
       textChannels.push(channel)
     }
   })
