@@ -39,6 +39,7 @@ Vuetify: <https://discord.gg/m9jP5vy>
 
 **Other libraries**
 
+FormKit: <https://discord.gg/2q3UZkUQbR>
 Vue Formulate: <https://discord.gg/NTYTVm5yFp>
 
 ---
@@ -164,6 +165,7 @@ Seattle: <https://discord.gg/Wdvr4E9>
 **Latest additions**
 
 Chakra UI: <https://discord.gg/jvsvfQSjhv>
+FormKit: <https://discord.gg/2q3UZkUQbR>
 Naive UI: <https://discord.gg/Pqv7Mev5Dd>
 Oruga UI: <https://discord.gg/9kPxPUXzRZ>
 Vite: <https://chat.vitejs.dev/>
