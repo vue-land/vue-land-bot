@@ -16,17 +16,23 @@ type Task = {
   action: (bot: Bot) => Awaitable<void>
 }
 
+type CommandProvider = Command | ((bot: Bot) => Awaitable<Command>)
+
 interface Config {
-  commands?: Command | Command[]
+  commands?: CommandProvider | CommandProvider[]
   events?: Events
   tasks?: Task | Task[]
 }
 
 export function feature(config: Config) {
   return {
-    install(bot: BotContext) {
+    async install(bot: BotContext) {
       if (config.commands) {
-        for (const command of toArray(config.commands)) {
+        for (let command of toArray(config.commands)) {
+          if (typeof command === 'function') {
+            command = await command(bot.bot)
+          }
+
           bot.addCommand(command)
         }
       }
@@ -53,7 +59,7 @@ export function feature(config: Config) {
   }
 }
 
-export function command(commands: Command | Command[]) {
+export function command(commands: CommandProvider | CommandProvider[]) {
   return feature({ commands })
 }
 
