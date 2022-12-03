@@ -17,11 +17,11 @@ If you're new to this server then you might like to start by checking out the fo
 
 The roles on Vue Land are explained below. Apart from the moderators, please do not attempt to `@` mention roles or the people who have them unless they've offered to help you with your current problem.
 
-<@&954766340688867379> - Members of the Vue core team. See <https://vuejs.org/about/team.html>.
-<@&920189061476519946> - The keepers of peace and order. Feel free to ping (or preferably DM) them if there is any issue which requires their attention. Spam can be reported in <#709346617223938068>.
-<@&920216231687127060> - 'Most Valuable Player'. These are people who help out a lot on this server, answering questions and making new users feel welcome.
-<@&954766839798440006> - People who maintain or contribute to important libraries and tools in the Vue ecosystem and beyond.
-<@&954766963073249280> - Those who don't fall into the other categories but have nevertheless made a significant contribution to the Vue community. e.g. through conferences or creating educational material.
+<@&361871508102053892> - Members of the Vue core team. See <https://vuejs.org/about/team.html>.
+<@&336317962522722316> - The keepers of peace and order. Feel free to ping (or preferably DM) them if there is any issue which requires their attention. Spam can be reported in <#709346617223938068>.
+<@&443314906050330635> - 'Most Valuable Player'. These are people who help out a lot on this server, answering questions and making new users feel welcome.
+<@&359877575738130432> - People who maintain or contribute to important libraries and tools in the Vue ecosystem and beyond.
+<@&469085209187319808> - Those who don't fall into the other categories but have nevertheless made a significant contribution to the Vue community. e.g. through conferences or creating educational material.
 
 ---
 
