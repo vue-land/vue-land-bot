@@ -69,7 +69,7 @@ AlphaBet: <https://discord.gg/zVg5Xjk>
 Devcord: <https://discord.gg/devcord>
 freeCodeCamp: <https://discord.gg/KVUmVXA>
 UX/UI: <https://discord.gg/2uSraS9>
-Webdev / Webdesign: <https://discord.gg/aSx52Zg>
+Webdev / Webdesign: <https://discord.gg/web>
 World of Coding: <https://discord.gg/pkShK9ax2X>
 
 ---
@@ -159,24 +159,3 @@ Vuejs Amsterdam: <https://discord.gg/U2tzFPE>
 Berlin: <https://discord.gg/PRK2y2U>
 Kyiv: <https://t.me/vuejs_kyiv>
 Seattle: <https://discord.gg/Wdvr4E9>
-
----
-
-**Latest additions**
-
-Chakra UI: <https://discord.gg/jvsvfQSjhv>
-FormKit: <https://discord.gg/2q3UZkUQbR>
-Naive UI: <https://discord.gg/Pqv7Mev5Dd>
-Oruga UI: <https://discord.gg/9kPxPUXzRZ>
-Vite: <https://chat.vitejs.dev/>
-Volar: <https://discord.gg/d5TqRH8Tya>
-Vue Formulate: <https://discord.gg/NTYTVm5yFp>
-Windi CSS: <https://discord.gg/YHVBncpN5g>
-
----
-
-If you want a good general webdev server, I can recommend this one:
-Devcord: <https://discord.gg/devcord>
-
-Check our latest addition too:
-World of Coding: <https://discord.gg/pkShK9ax2X>
