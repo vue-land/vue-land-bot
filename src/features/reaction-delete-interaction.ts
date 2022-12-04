@@ -1,4 +1,5 @@
 import consola from 'consola'
+import { InteractionType } from 'discord-api-types/v9'
 import { Message, PartialMessage } from 'discord.js'
 import { events } from '../core/feature'
 
@@ -17,7 +18,7 @@ export default events({
     // Check the reaction is on an interaction response from this bot
     if (
       !interaction ||
-      interaction.type !== 'APPLICATION_COMMAND' ||
+      interaction.type !== InteractionType.ApplicationCommand ||
       !interaction.commandName ||
       !isMyMessage(message)
     ) {

@@ -1,4 +1,10 @@
-import { Awaitable, Client, ClientEvents, Guild, Intents } from 'discord.js'
+import {
+  Awaitable,
+  Client,
+  ClientEvents,
+  Guild,
+  IntentsBitField
+} from 'discord.js'
 import { register } from '../api/deletion-cache'
 import { Command } from './types/command'
 import { Config } from './types/config'
@@ -88,9 +94,10 @@ export class BotBuilder {
   async init() {
     const client = new Client({
       intents: [
-        Intents.FLAGS.GUILDS,
-        Intents.FLAGS.GUILD_MESSAGES,
-        Intents.FLAGS.GUILD_MESSAGE_REACTIONS
+        IntentsBitField.Flags.Guilds,
+        IntentsBitField.Flags.GuildMessages,
+        IntentsBitField.Flags.GuildMessageReactions,
+        IntentsBitField.Flags.MessageContent
       ],
 
       // This prevents @ mentions from pinging by default. Individual features can re-enable them if required.

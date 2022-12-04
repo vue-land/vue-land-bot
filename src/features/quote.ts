@@ -1,5 +1,5 @@
 import { ApplicationCommandOptionType } from 'discord-api-types/v9'
-import { BaseGuildTextChannel, MessageEmbedOptions } from 'discord.js'
+import { BaseGuildTextChannel, EmbedBuilder } from 'discord.js'
 import { loadTextChannels } from '../api/channels'
 import { command } from '../core/feature'
 
@@ -25,7 +25,7 @@ export default command({
     }
   ],
   action: async (bot, interaction) => {
-    const content = interaction.options.getString('text')
+    const content = interaction.options.getString('text') || undefined
     const chunks = interaction.options
       .getString('message', true)
       .trim()
@@ -64,12 +64,13 @@ export default command({
     if (message) {
       const messageContent = message.content.replace(/[\u200b\n]+$/, '')
 
-      const embed: MessageEmbedOptions = {
-        color: '#1971c2',
-        description: `**From [#${(message.channel as any).name}](${
-          message.url
-        }):**\n\n${messageContent}`
-      }
+      const embed = new EmbedBuilder()
+        .setColor('#1971c2')
+        .setDescription(
+          `**From [#${(message.channel as any).name}](${
+            message.url
+          }):**\n\n${messageContent}`
+        )
 
       await interaction.reply({
         content,

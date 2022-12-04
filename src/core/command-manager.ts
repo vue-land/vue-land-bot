@@ -1,10 +1,11 @@
 import { REST } from '@discordjs/rest'
 import { APIApplicationCommand, Routes } from 'discord-api-types/v9'
 import {
+  ApplicationCommandPermissionType,
   Collection,
   CommandInteraction,
   Interaction,
-  Permissions,
+  PermissionFlagsBits,
   Role
 } from 'discord.js'
 import { getModeratorRoles, getTrustedRoles } from '../api/roles'
@@ -56,7 +57,7 @@ export default class CommandManager {
   private async run(bot: Bot, interaction: Interaction) {
     const startTime = Date.now()
 
-    if (!interaction.isCommand()) {
+    if (!interaction.isCommand() || !interaction.isChatInputCommand()) {
       return
     }
 
@@ -114,10 +115,10 @@ export default class CommandManager {
         // The permissions model doesn't allow us to specify which roles can use a particular command, but we can
         // specify which general permissions a user must have to be able to use it.
         default_member_permissions: String(
-          Permissions.FLAGS[
+          PermissionFlagsBits[
             // There doesn't seem to be a suitable flag for detecting MVPs, so we treat 'trusted' commands the same as
             // 'moderators' and rely on the permissions checks to flag any manual corrections that are needed.
-            roles === 'everyone' ? 'SEND_MESSAGES' : 'BAN_MEMBERS'
+            roles === 'everyone' ? 'SendMessages' : 'BanMembers'
           ]
         ),
 
@@ -162,7 +163,10 @@ export default class CommandManager {
 
         if (overrides) {
           for (const override of overrides) {
-            if (override.type === 'ROLE' && override.id === role.id) {
+            if (
+              override.type === ApplicationCommandPermissionType.Role &&
+              override.id === role.id
+            ) {
               return override.permission
             }
           }

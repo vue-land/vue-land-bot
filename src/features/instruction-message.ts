@@ -1,4 +1,4 @@
-import { Message, MessageEmbedOptions, TextChannel } from 'discord.js'
+import { ChannelType, EmbedBuilder, Message, TextChannel } from 'discord.js'
 import { isDeleted } from '../api/deletion-cache'
 import { events } from '../core/feature'
 import { debounce, withErrorLogging } from '../core/utils'
@@ -38,10 +38,9 @@ const createInstructionMessage = (channelName: string, messageText: string) => {
       }
     }
 
-    const embed: MessageEmbedOptions = {
-      color: embedColor,
-      description: messageText
-    }
+    const embed = new EmbedBuilder()
+      .setDescription(messageText)
+      .setColor(embedColor)
 
     const postNewMessage = async () => {
       lastMessage = await channel.send({ embeds: [embed] })
@@ -70,7 +69,7 @@ const createInstructionMessage = (channelName: string, messageText: string) => {
     const channel = message.channel
 
     if (
-      channel.type !== 'GUILD_TEXT' ||
+      channel.type !== ChannelType.GuildText ||
       channel.name.toLowerCase() !== channelName ||
       !channel.viewable
     ) {

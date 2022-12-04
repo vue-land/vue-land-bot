@@ -1,6 +1,9 @@
 import {
+  ChannelType,
+  EmbedBuilder,
+  ForumChannel,
   Message,
-  MessageEmbedOptions,
+  MessageType,
   TextBasedChannel,
   TextChannel,
   ThreadChannel
@@ -12,10 +15,11 @@ const messageText =
   'This thread has been automatically created for your question. Please post any follow-up messages here, rather than in the main channel.'
 
 const isAutoThreadChannel = (
-  channel: TextBasedChannel
+  channel: TextBasedChannel | ForumChannel | null
 ): channel is TextChannel => {
   return (
-    channel.type === 'GUILD_TEXT' &&
+    !!channel &&
+    channel.type === ChannelType.GuildText &&
     channel.name.toLowerCase() === 'pinia' &&
     channel.viewable
   )
@@ -67,7 +71,7 @@ export default events({
       message.author.bot ||
       message.author.system ||
       message.system ||
-      !['DEFAULT', 'REPLY'].includes(message.type)
+      ![MessageType.Default, MessageType.Reply].includes(message.type)
     ) {
       return
     }
@@ -75,8 +79,7 @@ export default events({
     const { channel } = message
 
     if (
-      channel.type === 'GUILD_PUBLIC_THREAD' &&
-      channel.parent &&
+      channel.type === ChannelType.PublicThread &&
       isAutoThreadChannel(channel.parent)
     ) {
       await deleteInfoMessage(channel)
@@ -107,10 +110,9 @@ export default events({
       name
     })
 
-    const embed: MessageEmbedOptions = {
-      color: '#1971c2',
-      description: messageText
-    }
+    const embed = new EmbedBuilder()
+      .setDescription(messageText)
+      .setColor('#1971c2')
 
     await thread.send({ embeds: [embed] })
   }

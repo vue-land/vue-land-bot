@@ -1,7 +1,8 @@
 import {
   BaseGuildTextChannel,
-  ChannelLogsQueryOptions,
+  FetchMessagesOptions,
   Message,
+  MessageType,
   ThreadChannel
 } from 'discord.js'
 import { MessageFilteringOptions } from './types/message-filtering-options'
@@ -76,7 +77,7 @@ export async function* loadMessagesFor(
   let queryCount = 1000
 
   while (true) {
-    const params: ChannelLogsQueryOptions = { limit: PAGE_SIZE }
+    const params: FetchMessagesOptions = { limit: PAGE_SIZE }
 
     if (lastMessage !== null) {
       params.before = lastMessage.id
@@ -87,7 +88,7 @@ export async function* loadMessagesFor(
     for (const message of pageOfMessages.values()) {
       if (
         isInDateRange(message) &&
-        ['DEFAULT', 'REPLY'].includes(message.type)
+        [MessageType.Default, MessageType.Reply].includes(message.type)
       ) {
         yield message
       }
