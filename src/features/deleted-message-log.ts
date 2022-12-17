@@ -1,4 +1,4 @@
-import { Message, MessageEmbedOptions, PartialMessage } from 'discord.js'
+import { EmbedBuilder, Message, PartialMessage } from 'discord.js'
 import { fetchLogChannel, useThread } from '../api/channels'
 import { Bot } from '../core/bot'
 import { events } from '../core/feature'
@@ -37,33 +37,33 @@ const logDeletedMessages = async (
     return
   }
 
-  const embed: MessageEmbedOptions = {
-    color: '#e03131',
-    timestamp: message.createdAt || message.createdTimestamp
-  }
+  const embed = new EmbedBuilder()
+    .setColor('#e03131')
+    .setTimestamp(message.createdAt)
 
   if (count === 1) {
     const { author } = message
 
-    Object.assign(embed, {
-      author: {
-        name: author?.tag,
-        icon_url: author?.displayAvatarURL()
-      },
-      description: `
-        **Message from <@${author?.id}> deleted in** <#${message.channel.id}>
-        ${message.content}
-      `
-    })
+    if (author) {
+      embed.setAuthor({
+        name: author.tag,
+        iconURL: author.displayAvatarURL()
+      })
+    }
+
+    embed.setDescription(`
+      **Message from <@${author?.id}> deleted in** <#${message.channel.id}>
+      ${message.content}
+    `)
   } else {
     const joinedMessages = messages
       .map(message => `[<@${message.author?.id}>]: ${message.content}`)
       .join('\n')
 
-    embed.description = `
+    embed.setDescription(`
       **${count}** messages deleted in <#${message.channel.id}>
       ${joinedMessages}
-    `
+    `)
   }
 
   await deletedMessagesThread.send({ embeds: [embed] })

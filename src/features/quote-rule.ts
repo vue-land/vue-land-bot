@@ -1,5 +1,5 @@
 import { ApplicationCommandOptionType } from 'discord-api-types/v9'
-import { BaseGuildTextChannel, MessageEmbedOptions } from 'discord.js'
+import { BaseGuildTextChannel, EmbedBuilder } from 'discord.js'
 import { loadTextChannels } from '../api/channels'
 import { command } from '../core/feature'
 import { getAsset } from '../fs/assets'
@@ -73,7 +73,7 @@ export default command(async () => {
       }
     ],
     action: async (bot, interaction) => {
-      const content = interaction.options.getString('text')
+      const content = interaction.options.getString('text') || undefined
       const numberName = interaction.options.getString('rule', true)
 
       if (!rulesChannel) {
@@ -100,10 +100,9 @@ export default command(async () => {
         })
       }
 
-      const embed: MessageEmbedOptions = {
-        color: '#1971c2',
-        description: `**From <#${rulesChannel.id}>:**\n\n${rule}`
-      }
+      const embed = new EmbedBuilder()
+        .setDescription(`**From <#${rulesChannel.id}>:**\n\n${rule}`)
+        .setColor('#1971c2')
 
       await interaction.reply({
         content,

@@ -60,7 +60,7 @@ export default feature({
         message += success
           .map(
             ({ invite, url }) =>
-              `◈ ${invite.presenceCount} / ${invite.memberCount} - ${url} - #${invite.channel.name} - ${invite.guild?.name}\n`
+              `◈ ${invite.presenceCount} / ${invite.memberCount} - ${url} - #${invite.channel?.name} - ${invite.guild?.name}\n`
           )
           .join('')
       }

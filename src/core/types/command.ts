@@ -1,5 +1,5 @@
 import { APIApplicationCommandOption } from 'discord-api-types/v9'
-import { Awaitable, CommandInteraction } from 'discord.js'
+import { Awaitable, ChatInputCommandInteraction } from 'discord.js'
 import { Bot } from '../bot'
 
 export interface Command {
@@ -8,5 +8,5 @@ export interface Command {
   hidden?: boolean
   roles: 'everyone' | 'moderators' | 'trusted'
   options?: APIApplicationCommandOption[]
-  action: (bot: Bot, ctx: CommandInteraction) => Awaitable<void>
+  action: (bot: Bot, ctx: ChatInputCommandInteraction) => Awaitable<unknown>
 }

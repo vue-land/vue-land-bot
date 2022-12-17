@@ -1,4 +1,10 @@
-import { Message, MessageEmbedOptions, TextChannel } from 'discord.js'
+import {
+  ChannelType,
+  EmbedBuilder,
+  Message,
+  MessageType,
+  TextChannel
+} from 'discord.js'
 import { fetchLogChannel, useThread } from '../api/channels'
 import { loadMessagesFor } from '../api/messages'
 import { Bot } from '../core/bot'
@@ -12,7 +18,7 @@ async function updateMessageCache(channel: TextChannel) {
     const messages = []
 
     for await (const message of asyncMessages) {
-      if (!message.author.bot && message.type === 'DEFAULT') {
+      if (!message.author.bot && message.type === MessageType.Default) {
         messages.push(message)
       }
     }
@@ -73,19 +79,18 @@ const postLogMessage = async (
     })`
   })
 
-  const embed: MessageEmbedOptions = {
-    color: '#fcc419',
-    author: {
+  const embed = new EmbedBuilder()
+    .setTitle(reason)
+    .setDescription(messageList.join('\n'))
+    .setColor('#fcc419')
+    .setTimestamp(new Date())
+    .setAuthor({
       name: message.author.tag,
-      icon_url: message.author.displayAvatarURL()
-    },
-    title: reason,
-    description: messageList.join('\n'),
-    timestamp: new Date(),
-    footer: {
+      iconURL: message.author.displayAvatarURL()
+    })
+    .setFooter({
       text: `User ID: ${message.author.id}`
-    }
-  }
+    })
 
   const thread = await useThread(logChannel, 'JOBS_MODERATION')
 
@@ -95,14 +100,14 @@ const postLogMessage = async (
 export default events({
   async messageCreate(bot, message) {
     // Ignore bots and replies
-    if (message.author.bot || message.type !== 'DEFAULT') {
+    if (message.author.bot || message.type !== MessageType.Default) {
       return
     }
 
     const channel = message.channel
 
     if (
-      channel.type !== 'GUILD_TEXT' ||
+      channel.type !== ChannelType.GuildText ||
       channel.name.toLowerCase() !== 'jobs'
     ) {
       return

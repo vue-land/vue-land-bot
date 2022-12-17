@@ -1,5 +1,6 @@
 import {
   BaseGuildTextChannel,
+  ChannelType,
   Guild,
   TextChannel,
   ThreadAutoArchiveDuration,
@@ -17,7 +18,7 @@ export async function fetchLogChannel(bot: Bot): Promise<TextChannel> {
   }
 
   // Ignore anything that isn't a text channel
-  if (channel.type !== 'GUILD_TEXT') {
+  if (channel.type !== ChannelType.GuildText) {
     throw new Error(`The log channel, ${logChannelId}, must be a text channel`)
   }
 
@@ -39,7 +40,7 @@ export async function fetchReportSpamChannel(bot: Bot): Promise<TextChannel> {
   }
 
   // Ignore anything that isn't a text channel
-  if (channel.type !== 'GUILD_TEXT') {
+  if (channel.type !== ChannelType.GuildText) {
     throw new Error(
       `The spam reporting channel, ${reportSpamChannelId}, must be a text channel`
     )
@@ -63,7 +64,12 @@ export async function loadTextChannelsForGuild(guild: Guild) {
   const textChannels: BaseGuildTextChannel[] = []
 
   channels.forEach(channel => {
-    if (channel.isText() && !channel.isVoice() && channel.viewable) {
+    if (
+      channel &&
+      channel.isTextBased() &&
+      !channel.isVoiceBased() &&
+      channel.viewable
+    ) {
       textChannels.push(channel)
     }
   })
@@ -107,7 +113,7 @@ export async function useThread(
 
   if (!thread) {
     thread = await channel.threads.create({
-      autoArchiveDuration: 'MAX',
+      autoArchiveDuration: ThreadAutoArchiveDuration.OneWeek,
       ...options,
       name
     })

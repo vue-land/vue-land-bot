@@ -1,5 +1,5 @@
 import { ApplicationCommandOptionType } from 'discord-api-types/v9'
-import { Message, MessageEmbedOptions, TextChannel } from 'discord.js'
+import { EmbedBuilder, Message, MessageType, TextChannel } from 'discord.js'
 import {
   fetchLogChannel,
   fetchReportSpamChannel,
@@ -60,23 +60,24 @@ const postLogMessage = async (
     return `:small_blue_diamond: [In #${channel}, ${timeDifference}s ago](${msg.url})`
   })
 
-  const embed: MessageEmbedOptions = {
-    color: '#e03131',
-    author: {
+  const embed = new EmbedBuilder()
+    .setTitle(reason)
+    .setColor('#e03131')
+    .setTimestamp(new Date())
+    .setAuthor({
       name: message.author.tag,
-      icon_url: message.author.displayAvatarURL()
-    },
-    title: reason,
-    description: `
-      ${messageList.join('\n')}
-      -----
-      ${message.content}
-    `,
-    timestamp: new Date(),
-    footer: {
+      iconURL: message.author.displayAvatarURL()
+    })
+    .setDescription(
+      `
+        ${messageList.join('\n')}
+        -----
+        ${message.content}
+      `
+    )
+    .setFooter({
       text: `User ID: ${message.author.id}`
-    }
-  }
+    })
 
   const thread = await useThread(logChannel, 'SPAM')
 
@@ -353,7 +354,10 @@ export default feature({
 
   events: {
     async messageCreate(bot, message) {
-      if (message.author.bot || !['DEFAULT', 'REPLY'].includes(message.type)) {
+      if (
+        message.author.bot ||
+        ![MessageType.Default, MessageType.Reply].includes(message.type)
+      ) {
         return
       }
 
