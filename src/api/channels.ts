@@ -1,11 +1,14 @@
 import {
-  BaseGuildTextChannel,
   ChannelType,
-  Guild,
+  NonThreadGuildBasedChannel,
   TextChannel,
   ThreadAutoArchiveDuration,
   ThreadChannel
 } from 'discord.js'
+import {
+  MessageableGuildChannel,
+  ThreadableGuildChannel
+} from './types/channels'
 import { isDeleted } from './deletion-cache'
 import { Bot } from '../core/bot'
 
@@ -55,26 +58,47 @@ export async function fetchReportSpamChannel(bot: Bot): Promise<TextChannel> {
   return channel
 }
 
-export async function loadTextChannels(bot: Bot) {
-  return loadTextChannelsForGuild(bot.guild)
+export async function loadMessageableChannels(bot: Bot) {
+  const viewableChannels = await loadViewableChannels(bot)
+  const messageableChannels: MessageableGuildChannel[] = []
+
+  for (const channel of viewableChannels) {
+    if (channel.isTextBased() && channel.messages) {
+      messageableChannels.push(channel)
+    }
+  }
+
+  return messageableChannels
 }
 
-export async function loadTextChannelsForGuild(guild: Guild) {
-  const channels = await guild.channels.fetch()
-  const textChannels: BaseGuildTextChannel[] = []
+export async function loadThreadableChannels(bot: Bot) {
+  const viewableChannels = await loadViewableChannels(bot)
+  const threadableChannels: ThreadableGuildChannel[] = []
+
+  for (const channel of viewableChannels) {
+    if (
+      (channel.isTextBased() || channel.type === ChannelType.GuildForum) &&
+      !channel.isVoiceBased() &&
+      channel.threads
+    ) {
+      threadableChannels.push(channel)
+    }
+  }
+
+  return threadableChannels
+}
+
+async function loadViewableChannels(bot: Bot) {
+  const channels = await bot.guild.channels.fetch()
+  const viewableChannels: NonThreadGuildBasedChannel[] = []
 
   channels.forEach(channel => {
-    if (
-      channel &&
-      channel.isTextBased() &&
-      !channel.isVoiceBased() &&
-      channel.viewable
-    ) {
-      textChannels.push(channel)
+    if (channel && channel.viewable) {
+      viewableChannels.push(channel)
     }
   })
 
-  return textChannels
+  return viewableChannels
 }
 
 const threadCache: Record<string, ThreadChannel> = {}

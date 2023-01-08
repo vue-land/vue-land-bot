@@ -1,6 +1,15 @@
-import { BaseGuildTextChannel, User } from 'discord.js'
+import { ThreadChannel, User } from 'discord.js'
+import {
+  MessageableGuildChannel,
+  ThreadableGuildChannel
+} from './types/channels'
 import { MessageFilteringOptions } from './types/message-filtering-options'
-import { fetchLogChannel, loadTextChannels, useThread } from './channels'
+import {
+  fetchLogChannel,
+  loadMessageableChannels,
+  loadThreadableChannels,
+  useThread
+} from './channels'
 import { loadMessagesFor } from './messages'
 import { Bot } from '../core/bot'
 
@@ -72,21 +81,64 @@ export async function loadMessageStatistics(
   bot: Bot,
   filteringOptions: MessageFilteringOptions
 ) {
-  const textChannels = await loadTextChannels(bot)
+  const messageableChannels = await loadMessageableChannels(bot)
+  const threadableChannels = await loadThreadableChannels(bot)
 
   const postCountsByAuthor: Record<string, number> = Object.create(null)
   const postCountsByChannel: Record<string, number> = Object.create(null)
   const authors: Record<string, User> = Object.create(null)
-  const channels: Record<string, BaseGuildTextChannel> = Object.create(null)
+  const channels: Record<
+    string,
+    MessageableGuildChannel | ThreadableGuildChannel
+  > = Object.create(null)
 
+  const activeThreads = new Set<string>()
+  const activeChannels = new Set<string>()
   let threadCount = 0
-  let activeThreadCount = 0
-  let activeChannelCount = 0
   let messageCount = 0
 
-  for (const channel of textChannels) {
+  const countMessages = async (
+    channelId: string,
+    channelOrThread: MessageableGuildChannel | ThreadChannel
+  ) => {
+    postCountsByChannel[channelId] ??= 0
+
+    const asyncMessages = loadMessagesFor(channelOrThread, filteringOptions)
+
+    for await (const message of asyncMessages) {
+      const { author } = message
+
+      if (author.bot) {
+        continue
+      }
+
+      const authorId = author.id
+
+      if (!authors[authorId]) {
+        authors[authorId] = author
+        postCountsByAuthor[authorId] = 0
+      }
+
+      ++postCountsByAuthor[authorId]
+      ++postCountsByChannel[channelId]
+      ++messageCount
+      activeChannels.add(channelId)
+
+      if (channelOrThread.isThread()) {
+        activeThreads.add(channelOrThread.id)
+      }
+    }
+  }
+
+  for (const channel of messageableChannels) {
     const channelId = channel.id
-    postCountsByChannel[channelId] = 0
+    channels[channelId] = channel
+
+    await countMessages(channelId, channel)
+  }
+
+  for (const channel of threadableChannels) {
+    const channelId = channel.id
     channels[channelId] = channel
 
     const { threads: activeThreads } = await channel.threads.fetch()
@@ -96,47 +148,10 @@ export async function loadMessageStatistics(
 
     threadCount += activeThreads.size + archiveThreads.size
 
-    const threads = [
-      channel,
-      ...activeThreads.values(),
-      ...archiveThreads.values()
-    ]
-
-    let activeChannel = false
+    const threads = [...activeThreads.values(), ...archiveThreads.values()]
 
     for (const thread of threads) {
-      let activeThread = false
-
-      const asyncMessages = loadMessagesFor(thread, filteringOptions)
-
-      for await (const message of asyncMessages) {
-        const { author } = message
-
-        if (author.bot) {
-          continue
-        }
-
-        const authorId = author.id
-
-        if (!authors[authorId]) {
-          authors[authorId] = author
-          postCountsByAuthor[authorId] = 0
-        }
-
-        ++postCountsByAuthor[authorId]
-        ++postCountsByChannel[channelId]
-        ++messageCount
-        activeChannel = true
-        activeThread = true
-      }
-
-      if (activeThread && thread !== channel) {
-        ++activeThreadCount
-      }
-    }
-
-    if (activeChannel) {
-      ++activeChannelCount
+      await countMessages(channelId, thread)
     }
   }
 
@@ -164,10 +179,10 @@ export async function loadMessageStatistics(
     users: authorsList,
     channels: channelsList,
     totals: {
-      activeTextChannels: activeChannelCount,
-      textChannels: textChannels.length,
+      activeTextChannels: activeChannels.size,
+      textChannels: messageableChannels.length,
       threads: threadCount,
-      activeThreads: activeThreadCount,
+      activeThreads: activeThreads.size,
       messages: messageCount
     }
   }

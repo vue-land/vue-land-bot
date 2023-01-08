@@ -1,5 +1,9 @@
 import { ApplicationCommandOptionType } from 'discord-api-types/v9'
-import { fetchLogChannel, loadTextChannels, useThread } from '../api/channels'
+import {
+  fetchLogChannel,
+  loadMessageableChannels,
+  useThread
+} from '../api/channels'
 import { checkInvitesInChannel } from '../api/invites'
 import { feature } from '../core/feature'
 import { logger } from '../core/utils'
@@ -25,7 +29,7 @@ export default feature({
 
       const channelName = channelOption ? channelOption.name : CHANNEL_NAME
 
-      const textChannels = await loadTextChannels(bot)
+      const textChannels = await loadMessageableChannels(bot)
 
       const channel = textChannels.find(channel => channel.name === channelName)
 
@@ -105,7 +109,7 @@ export default feature({
     action: async bot => {
       logger.info('Starting Discord invites check...')
 
-      const textChannels = await loadTextChannels(bot)
+      const textChannels = await loadMessageableChannels(bot)
 
       const channel = textChannels.find(
         channel => channel.name === CHANNEL_NAME

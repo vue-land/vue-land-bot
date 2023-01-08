@@ -1,7 +1,8 @@
-import { BaseGuildTextChannel, Invite } from 'discord.js'
+import { Invite } from 'discord.js'
+import { MessageableGuildChannel } from './types/channels'
 import { pause } from '../core/utils'
 
-export async function checkInvitesInChannel(channel: BaseGuildTextChannel) {
+export async function checkInvitesInChannel(channel: MessageableGuildChannel) {
   const pageOfMessages = await channel.messages.fetch({ limit: 100 })
 
   const messageText = pageOfMessages.map(message => message.content).join('\n')
