@@ -18,7 +18,7 @@ export async function pause(delayMs: number) {
   })
 }
 
-export function debounce<T extends Array<any>>(
+export function debounce<T extends Array<unknown>>(
   fn: (...args: T) => void,
   duration: number
 ) {
@@ -35,7 +35,7 @@ export function debounce<T extends Array<any>>(
   }
 }
 
-export function withErrorLogging<T extends Array<any>>(
+export function withErrorLogging<T extends Array<unknown>>(
   taskName: string,
   fn: (...args: T) => Awaitable<void>
 ) {
