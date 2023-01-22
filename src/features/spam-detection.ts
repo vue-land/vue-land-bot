@@ -1,5 +1,5 @@
 import { ApplicationCommandOptionType } from 'discord-api-types/v9'
-import { EmbedBuilder, Message, MessageType, TextChannel } from 'discord.js'
+import { EmbedBuilder, Message, TextChannel } from 'discord.js'
 import {
   fetchLogChannel,
   fetchReportSpamChannel,
@@ -9,7 +9,7 @@ import { isDeleted } from '../api/deletion-cache'
 import { getTrustedRoles } from '../api/roles'
 import { Bot } from '../core/bot'
 import { feature } from '../core/feature'
-import { logger } from '../core/utils'
+import { isNormalUserMessage, logger } from '../core/utils'
 
 const recentMessages: { message: Message; receivedTime: number }[] = []
 
@@ -354,10 +354,7 @@ export default feature({
 
   events: {
     async messageCreate(bot, message) {
-      if (
-        message.author.bot ||
-        ![MessageType.Default, MessageType.Reply].includes(message.type)
-      ) {
+      if (!isNormalUserMessage(message)) {
         return
       }
 

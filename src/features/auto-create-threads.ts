@@ -3,13 +3,12 @@ import {
   EmbedBuilder,
   ForumChannel,
   Message,
-  MessageType,
   TextBasedChannel,
   TextChannel,
   ThreadChannel
 } from 'discord.js'
 import { events } from '../core/feature'
-import { logger, pause } from '../core/utils'
+import { isMyMessage, isNormalUserMessage, logger, pause } from '../core/utils'
 
 const messageText =
   'This thread has been automatically created for your question. Please post any follow-up messages here, rather than in the main channel.'
@@ -26,12 +25,10 @@ const isAutoThreadChannel = (
 }
 
 const isInfoMessage = (message: Message) => {
-  const botUserId = message.client.user?.id
-
   const { embeds } = message
 
   return (
-    message.author.id === botUserId &&
+    isMyMessage(message) &&
     message.deletable &&
     embeds &&
     embeds.length === 1 &&
@@ -67,12 +64,7 @@ async function deleteInfoMessage(channel: ThreadChannel) {
 
 export default events({
   async messageCreate(bot, message) {
-    if (
-      message.author.bot ||
-      message.author.system ||
-      message.system ||
-      ![MessageType.Default, MessageType.Reply].includes(message.type)
-    ) {
+    if (!isNormalUserMessage(message)) {
       return
     }
 

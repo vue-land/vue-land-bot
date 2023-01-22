@@ -3,7 +3,7 @@ import { Message } from 'discord.js'
 import { MessageableGuildChannel } from '../api/types/channels'
 import { loadMessageableChannels } from '../api/channels'
 import { command } from '../core/feature'
-import { logger } from '../core/utils'
+import { isMyMessage, logger } from '../core/utils'
 import { getAsset } from '../fs/assets'
 
 const CHANNEL_NAMES = [
@@ -80,14 +80,11 @@ async function updateChannel(
   }
 
   const messages: Message[] = []
-  let authorId = null
 
   for (const message of pageOfMessages.values()) {
-    authorId = authorId || message.author.id
-
     // Check some more constraints that confirm the channel is in the state we expect
-    if (message.author.id !== authorId) {
-      logError('The specified channel has messages by multiple authors')
+    if (!isMyMessage(message)) {
+      logError('The specified channel contains messages by another user')
       return
     }
 

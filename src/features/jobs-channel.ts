@@ -9,6 +9,7 @@ import { fetchLogChannel, useThread } from '../api/channels'
 import { loadMessagesFor } from '../api/messages'
 import { Bot } from '../core/bot'
 import { events } from '../core/feature'
+import { isNormalUserMessage } from '../core/utils'
 
 const messageCache = new Map<string, Message>()
 
@@ -18,7 +19,10 @@ async function updateMessageCache(channel: TextChannel) {
     const messages = []
 
     for await (const message of asyncMessages) {
-      if (!message.author.bot && message.type === MessageType.Default) {
+      if (
+        isNormalUserMessage(message) &&
+        message.type === MessageType.Default
+      ) {
         messages.push(message)
       }
     }
@@ -100,7 +104,7 @@ const postLogMessage = async (
 export default events({
   async messageCreate(bot, message) {
     // Ignore bots and replies
-    if (message.author.bot || message.type !== MessageType.Default) {
+    if (!isNormalUserMessage(message) || message.type !== MessageType.Default) {
       return
     }
 
