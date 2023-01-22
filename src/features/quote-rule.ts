@@ -1,11 +1,12 @@
 import { ApplicationCommandOptionType } from 'discord-api-types/v9'
-import { BaseGuildTextChannel, EmbedBuilder } from 'discord.js'
-import { loadTextChannels } from '../api/channels'
+import { EmbedBuilder } from 'discord.js'
+import { MessageableGuildChannel } from '../api/types/channels'
+import { loadMessageableChannels } from '../api/channels'
 import { command } from '../core/feature'
 import { getAsset } from '../fs/assets'
 
 const RULES_CHANNEL_NAME = 'rules'
-let rulesChannel: BaseGuildTextChannel | undefined = undefined
+let rulesChannel: MessageableGuildChannel | undefined = undefined
 
 const numbers = [
   'one',
@@ -77,7 +78,7 @@ export default command(async () => {
       const numberName = interaction.options.getString('rule', true)
 
       if (!rulesChannel) {
-        const channels = await loadTextChannels(bot)
+        const channels = await loadMessageableChannels(bot)
 
         rulesChannel = channels.find(
           channel => channel.name === RULES_CHANNEL_NAME

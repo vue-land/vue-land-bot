@@ -1,6 +1,7 @@
 import { ApplicationCommandOptionType } from 'discord-api-types/v9'
-import { BaseGuildTextChannel, Message } from 'discord.js'
-import { loadTextChannels } from '../api/channels'
+import { Message } from 'discord.js'
+import { MessageableGuildChannel } from '../api/types/channels'
+import { loadMessageableChannels } from '../api/channels'
 import { command } from '../core/feature'
 import { logger } from '../core/utils'
 import { getAsset } from '../fs/assets'
@@ -42,7 +43,7 @@ export default command({
       ephemeral: true
     })
 
-    const textChannels = await loadTextChannels(bot)
+    const textChannels = await loadMessageableChannels(bot)
 
     const channel = textChannels.find(channel => channel.name === channelName)
     const errorMessage = `\`#${channelName}\` could not be updated`
@@ -62,7 +63,7 @@ export default command({
 })
 
 async function updateChannel(
-  channel: BaseGuildTextChannel
+  channel: MessageableGuildChannel
 ): Promise<string | void> {
   const channelName = channel.name
 

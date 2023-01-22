@@ -1,10 +1,10 @@
 import {
-  BaseGuildTextChannel,
   FetchMessagesOptions,
   Message,
   MessageType,
   ThreadChannel
 } from 'discord.js'
+import { MessageableGuildChannel } from './types/channels'
 import { MessageFilteringOptions } from './types/message-filtering-options'
 import { pause } from '../core/utils'
 
@@ -68,7 +68,7 @@ const createDateChecks = ({
 }
 
 export async function* loadMessagesFor(
-  channel: BaseGuildTextChannel | ThreadChannel,
+  channel: MessageableGuildChannel | ThreadChannel,
   filteringOptions: MessageFilteringOptions = {}
 ) {
   const { isTooOld, isInDateRange } = createDateChecks(filteringOptions)

@@ -1,10 +1,11 @@
 import { ApplicationCommandOptionType } from 'discord-api-types/v9'
-import { BaseGuildTextChannel, EmbedBuilder } from 'discord.js'
-import { loadTextChannels } from '../api/channels'
+import { EmbedBuilder } from 'discord.js'
+import { MessageableGuildChannel } from '../api/types/channels'
+import { loadMessageableChannels } from '../api/channels'
 import { command } from '../core/feature'
 
 const CHANNEL_NAMES = ['welcome', 'related-discords', 'how-to-get-help']
-const channelsCache: BaseGuildTextChannel[] = []
+const channelsCache: MessageableGuildChannel[] = []
 
 export default command({
   name: 'quote',
@@ -41,7 +42,7 @@ export default command({
     }
 
     if (!channelsCache.length) {
-      const channels = await loadTextChannels(bot)
+      const channels = await loadMessageableChannels(bot)
 
       for (const channel of channels) {
         if (CHANNEL_NAMES.includes(channel.name)) {
