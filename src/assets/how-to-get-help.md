@@ -18,7 +18,11 @@ For some questions it isn't obvious which channel to use, especially if you don'
 
 ---
 
-Some tips for finding the best channel...
+We've recently added a forum channel: <#1060755995921481819>. If you have a question, you can either ask in there, or ask in one of the text channels. Please choose one or the other, don't post the same question in both.
+
+---
+
+Some tips for finding the best text channel...
 
 :one: If your question is about tools then try to ask in one of the `Tools` channels. :tools:
 :two: If you need help with your code then try under `Code Help`. Pick a channel based on what your question is *about*, not just which libraries you're using.
@@ -78,7 +82,7 @@ defineProps(['name'])
 
 ---
 
-Tools like JSFiddle, CodeSandbox, CodePen, and the Vue 3 SFC Playground can be used to create runnable examples that demonstrate your problem. These make it much easier for us to see and debug the problem ourselves. Creating a minimal, runnable example like this is also a great way to solve the problem yourself.
+The Vue 3 SFC Playground, <https://play.vuejs.org/>, is usually the easiest way to create a runnable example that demonstrates your problem. JSFiddle and StackBlitz are good alternatives if you can't use the SFC Playground. This makes it much easier for us to see and debug the problem ourselves. Creating a minimal, runnable example like this is also a great way to solve the problem yourself.
 
 ---
 

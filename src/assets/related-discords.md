@@ -40,6 +40,7 @@ Vuetify: <https://discord.gg/m9jP5vy>
 **Other libraries**
 
 FormKit: <https://discord.gg/2q3UZkUQbR>
+Vue Flow: <https://discord.gg/rwt6CBk4b5>
 Vue Formulate: <https://discord.gg/NTYTVm5yFp>
 
 ---
@@ -47,7 +48,7 @@ Vue Formulate: <https://discord.gg/NTYTVm5yFp>
 **Tools**
 
 CodeSandbox: <https://discord.gg/5BpufEP7MH>
-Storybook: <https://discord.gg/NzrwbJ5> and <#346627744664256518>
+Storybook: <https://discord.gg/NzrwbJ5>
 Vite: <https://chat.vitejs.dev/> and <#709030686945968188>
 Volar: <https://discord.gg/d5TqRH8Tya>
 
@@ -69,8 +70,8 @@ AlphaBet: <https://discord.gg/zVg5Xjk>
 Devcord: <https://discord.gg/devcord>
 freeCodeCamp: <https://discord.gg/KVUmVXA>
 UX/UI: <https://discord.gg/2uSraS9>
-Webdev / Webdesign: <https://discord.gg/aSx52Zg>
-World of Coding: <https://discord.gg/pkShK9ax2X>
+Webdev / Webdesign: <https://discord.gg/web>
+World of Coding: <https://discord.gg/program>
 
 ---
 
@@ -115,6 +116,14 @@ Storyblok <https://discord.gg/WmMYYQp>
 
 ---
 
+**Backend-as-a-service**
+
+Appwrite: <https://discord.gg/appwrite>
+Firebase: <https://discord.firebase.me/>
+Supabase: <https://discord.supabase.com/>
+
+---
+
 **Mobile / Desktop**
 
 Flutter: <https://discord.gg/N7Yshp4>
@@ -137,6 +146,7 @@ Relay: <https://discord.gg/Kb3SFkUeQt>
 
 Cypress: <https://discord.gg/cMjUZg7>
 Jest: <https://discord.gg/reactiflux>
+Vitest: <https://chat.vitest.dev/>
 
 ---
 
@@ -159,24 +169,3 @@ Vuejs Amsterdam: <https://discord.gg/U2tzFPE>
 Berlin: <https://discord.gg/PRK2y2U>
 Kyiv: <https://t.me/vuejs_kyiv>
 Seattle: <https://discord.gg/Wdvr4E9>
-
----
-
-**Latest additions**
-
-Chakra UI: <https://discord.gg/jvsvfQSjhv>
-FormKit: <https://discord.gg/2q3UZkUQbR>
-Naive UI: <https://discord.gg/Pqv7Mev5Dd>
-Oruga UI: <https://discord.gg/9kPxPUXzRZ>
-Vite: <https://chat.vitejs.dev/>
-Volar: <https://discord.gg/d5TqRH8Tya>
-Vue Formulate: <https://discord.gg/NTYTVm5yFp>
-Windi CSS: <https://discord.gg/YHVBncpN5g>
-
----
-
-If you want a good general webdev server, I can recommend this one:
-Devcord: <https://discord.gg/devcord>
-
-Check our latest addition too:
-World of Coding: <https://discord.gg/pkShK9ax2X>
