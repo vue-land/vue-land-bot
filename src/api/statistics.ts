@@ -12,6 +12,7 @@ import {
 } from './channels'
 import { loadMessagesFor } from './messages'
 import { Bot } from '../core/bot'
+import { isNormalUserMessage } from '../core/utils'
 
 export interface MessageCount {
   id: string
@@ -106,11 +107,11 @@ export async function loadMessageStatistics(
     const asyncMessages = loadMessagesFor(channelOrThread, filteringOptions)
 
     for await (const message of asyncMessages) {
-      const { author } = message
-
-      if (author.bot) {
+      if (!isNormalUserMessage(message)) {
         continue
       }
+
+      const { author } = message
 
       const authorId = author.id
 

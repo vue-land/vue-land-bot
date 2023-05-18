@@ -1,5 +1,5 @@
 import consola from 'consola'
-import { Awaitable } from 'discord.js'
+import { Awaitable, Message, MessageType, PartialMessage } from 'discord.js'
 
 export const logger = consola.create({})
 
@@ -46,4 +46,25 @@ export function withErrorLogging<T extends Array<unknown>>(
       logger.error(`${taskName} failed:`, err)
     }
   }
+}
+
+export function isMyMessage(message: Message | PartialMessage): boolean {
+  const botUserId = message.client.user?.id
+  const messageAuthorId = message.author?.id
+
+  return messageAuthorId != null && messageAuthorId === botUserId
+}
+
+export function isNormalUserMessage(
+  message: Message | PartialMessage
+): boolean {
+  const { author, system, type } = message
+
+  return (
+    !!author &&
+    !author.bot &&
+    !author.system &&
+    !system &&
+    (type === MessageType.Default || type === MessageType.Reply)
+  )
 }

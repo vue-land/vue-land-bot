@@ -1,14 +1,7 @@
 import consola from 'consola'
 import { InteractionType } from 'discord-api-types/v9'
-import { Message, PartialMessage } from 'discord.js'
 import { events } from '../core/feature'
-
-const isMyMessage = (message: Message | PartialMessage) => {
-  const botUserId = message.client.user?.id
-  const messageAuthorId = message.author?.id
-
-  return messageAuthorId != null && messageAuthorId === botUserId
-}
+import { isMyMessage } from '../core/utils'
 
 export default events({
   async messageReactionAdd(bot, reaction, user) {

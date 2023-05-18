@@ -1,7 +1,7 @@
 import { ChannelType, EmbedBuilder, Message, TextChannel } from 'discord.js'
 import { isDeleted } from '../api/deletion-cache'
 import { events } from '../core/feature'
-import { debounce, withErrorLogging } from '../core/utils'
+import { debounce, isMyMessage, withErrorLogging } from '../core/utils'
 
 // This is used as a way to identify which message to delete. It doesn't use the 'usual' #fcc419, helping to ensure we
 // don't accidentally delete a different message. Checking the message text would make it more difficult to change.
@@ -20,10 +20,9 @@ const createInstructionMessage = (channelName: string, messageText: string) => {
 
     if (!messageToDelete) {
       const recentMessages = await channel.messages.fetch({ limit: 100 })
-      const botUserId = channel.client.user?.id
 
       for (const message of recentMessages.values()) {
-        if (message.author.id === botUserId && message.deletable) {
+        if (isMyMessage(message) && message.deletable) {
           const embeds = message.embeds
 
           if (
@@ -97,7 +96,7 @@ const handlers = [
 
 export default events({
   async messageCreate(bot, message) {
-    if (message.author.id === bot.client.user.id) {
+    if (isMyMessage(message)) {
       return
     }
 
