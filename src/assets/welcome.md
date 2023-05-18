@@ -21,8 +21,8 @@ The roles on Vue Land are explained below. Apart from the moderators, please do 
 <@&336317962522722316> - The keepers of peace and order. Feel free to ping (or preferably DM) them if there is any issue which requires their attention. Spam can be reported in <#709346617223938068>.
 <@&443314906050330635> - 'Most Valuable Player'. These are people who help out a lot on this server, answering questions and making new users feel welcome.
 <@&359877575738130432> - People who maintain or contribute to important libraries and tools in the Vue ecosystem and beyond.
-<@&469085209187319808> - Those who don't fall into the other categories but have nevertheless made a significant contribution to the Vue community. e.g. through conferences or creating educational material.
-
+<@&469085209187319808> - Those who have made a significant contribution to the Vue community, e.g. through conferences or creating educational material.
+<@&1097705988238348338> - MVPs who no longer actively answer questions on this server.
 ---
 
 :wrench: **Requesting changes**
