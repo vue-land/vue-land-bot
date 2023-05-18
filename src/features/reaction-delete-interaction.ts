@@ -1,7 +1,6 @@
-import consola from 'consola'
 import { InteractionType } from 'discord-api-types/v9'
 import { events } from '../core/feature'
-import { isMyMessage } from '../core/utils'
+import { isMyMessage, logger } from '../core/utils'
 
 export default events({
   async messageReactionAdd(bot, reaction, user) {
@@ -26,9 +25,7 @@ export default events({
     const emojiName = reaction.emoji.name
 
     if (emojiName && ['🔥', '🗑️', '❌', '💣', '🧨'].includes(emojiName)) {
-      consola.log(
-        `Deleting /${interaction.commandName} message for ${user.tag}`
-      )
+      logger.log(`Deleting /${interaction.commandName} message for ${user.tag}`)
       await message.delete()
     }
   }
