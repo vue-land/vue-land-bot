@@ -1,4 +1,6 @@
-<:vue:326303429934841856> Welcome to **Vue Land** - <https://chat.vuejs.org/>
+# <:vue:326303429934841856> Welcome to Vue Land
+
+**Invite link:** <https://chat.vuejs.org/>
 
 Nice to have you here!
 
@@ -13,7 +15,7 @@ If you're new to this server then you might like to start by checking out the fo
 
 ---
 
-:busts_in_silhouette: **Roles**
+## :busts_in_silhouette: Roles
 
 The roles on Vue Land are explained below. Apart from the moderators, please do not attempt to `@` mention roles or the people who have them unless they've offered to help you with your current problem.
 
@@ -25,23 +27,31 @@ The roles on Vue Land are explained below. Apart from the moderators, please do 
 <@&1097705988238348338> - MVPs who no longer actively answer questions on this server.
 ---
 
-:wrench: **Requesting changes**
+## :wrench: Requesting changes
 
 This is a community-driven server. Feel free to suggest improvements in <#325581214910251011>.
 
 ---
 
-:link: **Links**
+## :link: Links
 
-Vue 3:
+### Vue 3:
 
 :small_blue_diamond: Vue: <https://vuejs.org/>
+:small_blue_diamond: Vue SFC Playground: <https://play.vuejs.org/>
 :small_blue_diamond: Vue Router: <https://router.vuejs.org/>
 :small_blue_diamond: Pinia: <https://pinia.vuejs.org/>
+:small_blue_diamond: Pinia Playground: <https://play.pinia.vuejs.org/>
 :small_blue_diamond: Vuex: <https://vuex.vuejs.org/>
 
-Vue 2:
+### Vue 2:
 
 :small_blue_diamond: Vue: <https://v2.vuejs.org/>
 :small_blue_diamond: Vue Router: <https://v3.router.vuejs.org/>
 :small_blue_diamond: Vuex: <https://v3.vuex.vuejs.org/>
+
+### Other
+
+:small_blue_diamond: Vue Land FAQ: <https://vue-land.github.io/faq/>
+:small_blue_diamond: Vite: <https://vitejs.dev/>
+:small_blue_diamond: VitePress: <https://vitepress.dev/>

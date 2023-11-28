@@ -1,4 +1,6 @@
-**<:vue:326303429934841856> Vue Land - Ground rules**
+# <:vue:326303429934841856> Vue Land
+
+## Ground rules
 
 :one: Be respectful: <https://vuejs.org/about/coc.html>
 :two: Personal attacks, abuse, bullying, harassment, trolling, hate speech, etc. will not be tolerated
@@ -8,18 +10,15 @@
 :six: No job postings or requests for work. Posts in <#325675277046906881> come from <https://vuejobs.com/>
 :seven: Please post in English, except in the dedicated language channels
 
-**DMs (Direct Messages)**
+You should also read <#854729996312641536> before posting questions.
 
-●  Rules :one:, :two: & :three: also apply to DMs
-●  Don't use DMs to ask for help with your code: use the public channels
-●  Don't send DMs asking for work
+## DMs (Direct Messages)
 
-**Where next?**
+* Rules :one:, :two: & :three: also apply to DMs
+* Don't use DMs to ask for help with your code: use the public channels
+* Don't send DMs asking for work
 
-:small_blue_diamond: <#325654285255704578>
-:small_blue_diamond: <#854729996312641536>
-
-**Moderation/admin channels**
+## Moderation/admin channels
 
 :small_orange_diamond: <#709346617223938068> for reporting spam, including spam sent via DMs from users on this server
 :small_orange_diamond: <#325581214910251011> to reach out to the admins, e.g. about changing settings or adding channels

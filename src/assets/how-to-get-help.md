@@ -1,4 +1,4 @@
-:wave: Welcome!
+# :wave: Welcome!
 
 If you're looking for help with Vue then you've come to the right place!
 
@@ -10,7 +10,7 @@ Before asking a question on this Discord, check the <#505423005929832468> channe
 
 ---
 
-**Picking a channel**
+## Picking a channel
 
 :exclamation: Please only ask in one channel.
 
@@ -33,7 +33,7 @@ As you might imagine, a lot of questions end up in either <#325479107012067328> 
 
 ---
 
-**How to ask a good question**
+## How to ask a good question
 
 Beginners are very welcome <:spock_vue:326303792804921345>. Please don't be afraid to ask a question because you're new. We all started the same way.
 
@@ -43,7 +43,7 @@ Keep in mind that you are being helped by volunteers :teacher:. If your question
 
 ---
 
-You should research your question before you ask. Try searching the web and reading the relevant Vue guides before you post here. Don't skip steps in the hope of getting a quicker answer.
+You should research your question before you ask. Search the web and read the relevant guides. Try writing some code yourself to explore the problem before you ask us for help. Don't skip steps in the hope of getting a quicker answer.
 
 ---
 
@@ -82,7 +82,7 @@ defineProps(['name'])
 
 ---
 
-The Vue 3 SFC Playground, <https://play.vuejs.org/>, is usually the easiest way to create a runnable example that demonstrates your problem. JSFiddle and StackBlitz are good alternatives if you can't use the SFC Playground. This makes it much easier for us to see and debug the problem ourselves. Creating a minimal, runnable example like this is also a great way to solve the problem yourself.
+The [Vue 3 SFC Playground](<https://play.vuejs.org/>) is usually the easiest way to create a runnable example that demonstrates your problem. There's also a [Pinia Playground](<https://play.pinia.vuejs.org/>). Both [JSFiddle](<https://jsfiddle.net/>) and [StackBlitz](<https://vite.new/vue>) are good alternatives if you can't use the Playgrounds. Providing a running example makes it much easier for us to see and debug the problem ourselves. Creating a minimal example like this is also a great way to solve the problem yourself.
 
 ---
 
@@ -101,7 +101,6 @@ Proof-read your question before you post it. Check that you wrote what you inten
 :small_orange_diamond: Can I ask a question?
 :small_orange_diamond: Does anyone have any experience with X?
 :small_orange_diamond: Can X be integrated with Y?
-:small_orange_diamond: Why am I just getting a white screen?
 
 These aren't proper questions. We can't tell what you really want to know. People won't volunteer to help you without knowing what the problem is. See <https://www.nohello.net/> and <https://dontasktoask.com/> for more details about why. Instead, please post a question that contains enough information about the problem for us to be able to attempt an answer.
 
@@ -111,7 +110,7 @@ Try to be realistic when asking a question. Questions that need an experienced d
 
 ---
 
-**Other advice**
+## Other advice
 
 :one: Never `@` tag people unless they are already involved in answering your question.
 :two: The people helping you will usually be typing code directly into Discord. They probably haven't run it. Don't expect it to work perfectly. You need to study it and understand it, not just copy it.

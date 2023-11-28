@@ -1,4 +1,4 @@
-**General Vue**
+## General Vue
 
 Vue Land: <https://chat.vuejs.org/>
 Egoist OSS: <https://discord.gg/2t5mdCz>
@@ -8,7 +8,7 @@ Vuejs Developers: <https://www.facebook.com/groups/vuejsdevelopers>
 
 ---
 
-**Boilerplates**
+## Boilerplates
 
 Gridsome: <https://discord.gg/22ysRd3>
 Ionic: <https://ionic.link/discord>
@@ -20,7 +20,7 @@ Vue-Storefront: <https://discord.vuestorefront.io/>
 
 ---
 
-**UI libraries**
+## UI libraries
 
 Bootstrap-Vue: <https://discord.com/invite/B8pcyCd>
 Buefy: <https://discordapp.com/invite/ZkdFJMr>
@@ -30,6 +30,7 @@ Inkline: <https://discord.gg/v7RbKcTSjQ>
 Iview: <https://gitter.im/iview/iview>
 Naive UI: <https://discord.gg/Pqv7Mev5Dd>
 Oruga UI: <https://discord.gg/9kPxPUXzRZ>
+PrimeVue: <https://discord.gg/gzKFYnpmCY>
 StoreFront UI: <https://discord.com/invite/TJpdzzN6q5>
 Vue Material: <https://discord.gg/CyfB6hC>
 VueSax: <https://discord.gg/2kHwpfe>
@@ -37,7 +38,7 @@ Vuetify: <https://discord.gg/m9jP5vy>
 
 ---
 
-**Other libraries**
+## Other libraries
 
 FormKit: <https://discord.gg/2q3UZkUQbR>
 Vue Flow: <https://discord.gg/rwt6CBk4b5>
@@ -45,7 +46,7 @@ Vue Formulate: <https://discord.gg/NTYTVm5yFp>
 
 ---
 
-**Tools**
+## Tools
 
 CodeSandbox: <https://discord.gg/5BpufEP7MH>
 Storybook: <https://discord.gg/NzrwbJ5>
@@ -54,17 +55,17 @@ Volar: <https://discord.gg/d5TqRH8Tya>
 
 ---
 
-**JavaScript**
+## JavaScript
 
 SpeakJS: <https://discord.gg/DUEt2vb>
 TypeScript: <https://discord.gg/typescript>
 
 Deno: <https://discord.gg/TGMHGv6>
-Nodeiflux: <https://discord.gg/aD42zPx>
+Nodeiflux: <https://discord.gg/vUsrbjd>
 
 ---
 
-**General Programming**
+## General Programming
 
 AlphaBet: <https://discord.gg/zVg5Xjk>
 Devcord: <https://discord.gg/devcord>
@@ -75,7 +76,7 @@ World of Coding: <https://discord.gg/program>
 
 ---
 
-**Frontend**
+## Frontend
 
 Alpine: <https://discord.com/invite/jUtkPyT>
 Angular: <https://discord.gg/angular>
@@ -86,7 +87,7 @@ Svelte: <https://discord.gg/H87FfaS>
 
 ---
 
-**CSS**
+## CSS
 
 Bootstrap: <https://spectrum.chat/bootstrap>
 Tailwind: <https://discord.gg/vRmXppU>
@@ -95,7 +96,7 @@ Windi CSS: <https://discord.gg/YHVBncpN5g>
 
 ---
 
-**Backend**
+## Backend
 
 Adonis: <https://discord.gg/k5myGAz>
 Elixir: <https://discord.gg/elixir>
@@ -105,18 +106,18 @@ Nest: <https://discord.gg/G7Qnnhy>
 Python: <https://discord.gg/python>
 Sails: <https://discord.gg/gbJZuNm>
 ReasonML: <https://discord.gg/reasonml>
-Ruby + RoR: <https://discord.gg/EnSevaRfct>
+Ruby + RoR: <https://discord.gg/ad2acQFtkh>
 Rust: <https://discord.gg/aXRWCCE>
 
 ---
 
-**CMS**
+## CMS
 
 Storyblok <https://discord.gg/WmMYYQp>
 
 ---
 
-**Backend-as-a-service**
+## Backend-as-a-service
 
 Appwrite: <https://discord.gg/appwrite>
 Firebase: <https://discord.firebase.me/>
@@ -124,7 +125,7 @@ Supabase: <https://discord.supabase.com/>
 
 ---
 
-**Mobile / Desktop**
+## Mobile / Desktop
 
 Flutter: <https://discord.gg/N7Yshp4>
 NativeScript: <https://nativescript.org/discord>
@@ -133,7 +134,7 @@ Weex EN: <https://gitter.im/weex-en/Lobby>
 
 ---
 
-**GraphQL**
+## GraphQL
 
 Apollo: <https://spectrum.chat/apollo>
 GraphQL: <https://discord.gg/ef2h6QM>
@@ -142,21 +143,16 @@ Relay: <https://discord.gg/Kb3SFkUeQt>
 
 ---
 
-**Testing**
+## Testing
 
 Cypress: <https://discord.gg/cMjUZg7>
 Jest: <https://discord.gg/reactiflux>
+Playwright: <https://discord.gg/playwright>
 Vitest: <https://chat.vitest.dev/>
 
 ---
 
-**Conference chats**
-
-Vuejs Amsterdam: <https://discord.gg/U2tzFPE>
-
----
-
-**Country communities**
+## Country communities
 
 :flag_br: Brasil: <https://t.me/vuejsbrasil> and full list: <https://github.com/vuejs-br/comunidades>
 :flag_ma: Morocco: <https://discord.gg/QbMcetW>
@@ -164,7 +160,7 @@ Vuejs Amsterdam: <https://discord.gg/U2tzFPE>
 
 ---
 
-**Local Meetup chats**
+## Local Meetup chats
 
 Berlin: <https://discord.gg/PRK2y2U>
 Kyiv: <https://t.me/vuejs_kyiv>
