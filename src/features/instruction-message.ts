@@ -86,7 +86,7 @@ const handlers = [
   ),
   createInstructionMessage(
     'jobs',
-    ':pushpin: Please read [the pinned message](https://discord.com/channels/325477692906536972/325675277046906881/938461542775685140) before posting in this channel'
+    'Messages in this channel are posted automatically from <https://vuejobs.com/>'
   ),
   createInstructionMessage(
     'pinia',
