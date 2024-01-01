@@ -29,6 +29,12 @@ const containsBannedTag = (content: string) => {
   return withoutCode.includes('@here') || withoutCode.includes('@everyone')
 }
 
+const containsDiscordInvite = (content: string) => {
+  const withoutCode = stripCode(content)
+
+  return withoutCode.includes('discord.gg/')
+}
+
 const isDuplicate = (content: string, newMessageContent: string) => {
   return content.toLowerCase().trim() === newMessageContent.toLowerCase().trim()
 }
@@ -143,6 +149,7 @@ const blockFor = (reason: string) => {
 
 const blockForBannedTags = blockFor('using banned tags')
 const blockForExcessiveLinks = blockFor('excessive links')
+const blockForExcessiveDiscordInvites = blockFor('excessive Discord invites')
 const blockForExcessiveDuplicates = blockFor('excessive duplicates')
 const blockForExcessivePosts = blockFor('excessive posts')
 
@@ -153,6 +160,10 @@ const logCrossPost = async (bot: Bot, messages: Message[]) => {
 
 const logBannedTags = async (bot: Bot, messages: Message[]) => {
   await postLogMessage(bot, messages, 'Used banned tags')
+}
+
+const logDiscordInvite = async (bot: Bot, messages: Message[]) => {
+  await postLogMessage(bot, messages, 'Discord invite')
 }
 
 interface Rule {
@@ -188,6 +199,12 @@ const rules: Rule[] = [
     timeframe: 60,
     channelCount: 5,
     action: blockForExcessiveLinks
+  },
+  {
+    isBrokenBy: containsDiscordInvite,
+    timeframe: 5,
+    channelCount: 2,
+    action: blockForExcessiveDiscordInvites
   },
   {
     isBrokenBy: isDuplicate,
@@ -236,6 +253,12 @@ const rules: Rule[] = [
     timeframe: 1, // Irrelevant as any use is logged
     channelCount: 1,
     action: logBannedTags
+  },
+  {
+    isBrokenBy: containsDiscordInvite,
+    timeframe: 1, // Irrelevant as any use is logged
+    channelCount: 1,
+    action: logDiscordInvite
   }
 ]
 
