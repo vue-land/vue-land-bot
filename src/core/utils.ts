@@ -68,3 +68,14 @@ export function isNormalUserMessage(
     (type === MessageType.Default || type === MessageType.Reply)
   )
 }
+
+// The spoiler hack hides parts of a message:
+// - https://www.reddit.com/r/discordapp/comments/uiohaz/someone_managed_to_ping_me_and_other_people_with/
+// It is used by spammers to hide invites or tags at the end of a message.
+// We need to remove it from any messages posted by the bot.
+export function replaceSpoilerHack(
+  messageContent: string | null,
+  replacement = '[...]'
+) {
+  return (messageContent ?? '').replace(/(\|\|\u200b\|\|)+/g, replacement)
+}
