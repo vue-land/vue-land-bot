@@ -68,3 +68,40 @@ export function isNormalUserMessage(
     (type === MessageType.Default || type === MessageType.Reply)
   )
 }
+
+// This may look complicated, but it just checks that the string is plausibly a date in the correct format. It's
+// intended to protect against mistakes during development.
+const DATE_STRING_RE = /^(2\d\d\d-[01]\d-[0123]\d)(?:$|T)/
+
+export const getDateString = (timestamp: string | number | Date) => {
+  let normalizedTimestamp = timestamp
+
+  if (typeof normalizedTimestamp === 'number') {
+    normalizedTimestamp = new Date(normalizedTimestamp)
+  }
+
+  if (normalizedTimestamp instanceof Date) {
+    normalizedTimestamp = normalizedTimestamp.toISOString()
+  }
+
+  const dateStringMatch = normalizedTimestamp.match(DATE_STRING_RE)
+
+  if (dateStringMatch) {
+    return dateStringMatch[1]
+  }
+
+  throw new Error(
+    `Could not parse date string for ${typeof timestamp} ${timestamp}`
+  )
+}
+
+const MS_PER_DAY = 24 * 60 * 60 * 1000
+
+export function getFilteringDateString(day: string | number | Date) {
+  // Treat numbers 0 or below as day offsets, rather than epoch times
+  if (typeof day === 'number' && day <= 0) {
+    day = Date.now() + day * MS_PER_DAY
+  }
+
+  return getDateString(day)
+}
