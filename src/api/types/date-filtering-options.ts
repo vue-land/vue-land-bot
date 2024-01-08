@@ -9,7 +9,7 @@
 // "2021-10-12"               - 2021-10-12
 // Date.now()                 - today
 // new Date()                 - today
-export interface MessageFilteringOptions {
+export interface DateFilteringOptions {
   startDay?: number | string | Date
   endDay?: number | string | Date
 }

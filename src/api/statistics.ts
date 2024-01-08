@@ -3,7 +3,7 @@ import {
   MessageableGuildChannel,
   ThreadableGuildChannel
 } from './types/channels'
-import { MessageFilteringOptions } from './types/message-filtering-options'
+import { DateFilteringOptions } from './types/date-filtering-options'
 import {
   fetchLogChannel,
   loadMessageableChannels,
@@ -81,7 +81,7 @@ export async function postCountsAsRanking(
 
 export async function loadMessageStatistics(
   bot: Bot,
-  filteringOptions: MessageFilteringOptions
+  filteringOptions: DateFilteringOptions
 ) {
   const messageableChannels = await loadMessageableChannels(bot)
   const threadableChannels = await loadThreadableChannels(bot)

@@ -5,7 +5,7 @@ import {
   ThreadChannel
 } from 'discord.js'
 import { MessageableGuildChannel } from './types/channels'
-import { MessageFilteringOptions } from './types/message-filtering-options'
+import { DateFilteringOptions } from './types/date-filtering-options'
 import { getDateString, getFilteringDateString, pause } from '../core/utils'
 
 const PAGE_SIZE = 100
@@ -13,7 +13,7 @@ const PAGE_SIZE = 100
 const createDateChecks = ({
   startDay = 0,
   endDay = 0
-}: MessageFilteringOptions) => {
+}: DateFilteringOptions) => {
   const earliestDate = getFilteringDateString(startDay)
   const latestDate = getFilteringDateString(endDay)
 
@@ -34,7 +34,7 @@ const createDateChecks = ({
 
 export async function* loadMessagesFor(
   channel: MessageableGuildChannel | ThreadChannel,
-  filteringOptions: MessageFilteringOptions = {}
+  filteringOptions: DateFilteringOptions = {}
 ) {
   const { isTooOld, isInDateRange } = createDateChecks(filteringOptions)
 

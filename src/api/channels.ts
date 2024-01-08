@@ -11,7 +11,7 @@ import {
   MessageableGuildChannel,
   ThreadableGuildChannel
 } from './types/channels'
-import { MessageFilteringOptions } from './types/message-filtering-options'
+import { DateFilteringOptions } from './types/date-filtering-options'
 import { isDeleted } from './deletion-cache'
 import { Bot } from '../core/bot'
 import { getDateString, getFilteringDateString, pause } from '../core/utils'
@@ -153,7 +153,7 @@ export async function useThread(
 const createDateChecks = ({
   startDay = 0,
   endDay = 0
-}: MessageFilteringOptions) => {
+}: DateFilteringOptions) => {
   const earliestDate = getFilteringDateString(startDay)
   const latestDate = getFilteringDateString(endDay)
 
@@ -178,7 +178,7 @@ const createDateChecks = ({
 
 export async function* loadThreadsFor(
   channel: ThreadableGuildChannel,
-  filteringOptions: MessageFilteringOptions = {}
+  filteringOptions: DateFilteringOptions = {}
 ) {
   const { isTooOld, isInDateRange } = createDateChecks(filteringOptions)
 
