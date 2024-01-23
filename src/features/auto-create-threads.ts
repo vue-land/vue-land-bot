@@ -1,12 +1,12 @@
 import {
   ChannelType,
   EmbedBuilder,
-  ForumChannel,
   Message,
   TextBasedChannel,
   TextChannel,
   ThreadChannel
 } from 'discord.js'
+import { ThreadableGuildChannel } from '../api/types/channels'
 import { events } from '../core/feature'
 import { isMyMessage, isNormalUserMessage, logger, pause } from '../core/utils'
 
@@ -14,7 +14,7 @@ const messageText =
   'This thread has been automatically created for your question. Please post any follow-up messages here, rather than in the main channel.'
 
 const isAutoThreadChannel = (
-  channel: TextBasedChannel | ForumChannel | null
+  channel: TextBasedChannel | ThreadableGuildChannel | null
 ): channel is TextChannel => {
   return (
     !!channel &&

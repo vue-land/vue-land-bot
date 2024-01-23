@@ -10,7 +10,7 @@ import { Command } from './types/command'
 import { Config } from './types/config'
 import CommandManager from './command-manager'
 import schedule from './scheduler'
-import { logger, withErrorLogging } from './utils'
+import { logger, pause, withErrorLogging } from './utils'
 
 export interface Bot {
   client: Client<true>
@@ -107,6 +107,14 @@ export class BotBuilder {
     })
 
     await client.login(this.config.BOT_TOKEN)
+
+    await pause(100)
+
+    // In practice this shouldn't happen, but we need this check to keep TypeScript happy
+    while (!client.isReady()) {
+      logger.warn('Client not ready, waiting...')
+      await pause(10000)
+    }
 
     const { config } = this
 
