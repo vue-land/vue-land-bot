@@ -1,5 +1,7 @@
 import {
+  AnyThreadChannel,
   ChannelType,
+  FetchArchivedThreadOptions,
   NonThreadGuildBasedChannel,
   TextChannel,
   ThreadAutoArchiveDuration,
@@ -9,8 +11,10 @@ import {
   MessageableGuildChannel,
   ThreadableGuildChannel
 } from './types/channels'
+import { DateFilteringOptions } from './types/date-filtering-options'
 import { isDeleted } from './deletion-cache'
 import { Bot } from '../core/bot'
+import { getDateString, getFilteringDateString, pause } from '../core/utils'
 
 export async function fetchLogChannel(bot: Bot): Promise<TextChannel> {
   const logChannelId = bot.config.LOG_CHANNEL_ID
@@ -144,4 +148,87 @@ export async function useThread(
   }
 
   return thread
+}
+
+const createDateChecks = ({
+  startDay = 0,
+  endDay = 0
+}: DateFilteringOptions) => {
+  const earliestDate = getFilteringDateString(startDay)
+  const latestDate = getFilteringDateString(endDay)
+
+  // We don't necessarily have access to the messages, so we approximate with the timestamps. Anything using these
+  // threads will need to check the messages to confirm whether they are in the date range.
+  const isTooOld = (thread: AnyThreadChannel) =>
+    thread.archiveTimestamp &&
+    getDateString(thread.archiveTimestamp) < earliestDate
+  const isTooNew = (thread: AnyThreadChannel) =>
+    thread.createdTimestamp &&
+    getDateString(thread.createdTimestamp) > latestDate
+
+  const isInDateRange = (thread: AnyThreadChannel) =>
+    !isTooNew(thread) && !isTooOld(thread)
+
+  return {
+    isTooOld,
+    isTooNew,
+    isInDateRange
+  }
+}
+
+export async function* loadThreadsFor(
+  channel: ThreadableGuildChannel,
+  filteringOptions: DateFilteringOptions = {}
+) {
+  const { isTooOld, isInDateRange } = createDateChecks(filteringOptions)
+
+  // Active threads can all be loaded in a single call
+  const activeThreads = await channel.threads.fetchActive()
+
+  for (const thread of activeThreads.threads.values()) {
+    if (isInDateRange(thread)) {
+      yield thread
+    }
+  }
+
+  let lastThread: AnyThreadChannel | null | undefined = null
+  let queryCount = 1000
+
+  // Archived threads are paged, so we load the pages in a loop
+  while (true) {
+    const params: FetchArchivedThreadOptions = {
+      limit: 100
+    }
+
+    if (lastThread !== null) {
+      params.before = lastThread
+    }
+
+    const pageOfThreads = await channel.threads.fetchArchived(params)
+
+    for (const thread of pageOfThreads.threads.values()) {
+      if (isInDateRange(thread)) {
+        yield thread
+      }
+    }
+
+    lastThread = pageOfThreads.threads.last()
+
+    if (!pageOfThreads.hasMore || !lastThread || isTooOld(lastThread)) {
+      break
+    }
+
+    --queryCount
+
+    if (queryCount === 0) {
+      throw new Error(
+        `Too many queries, aborting. Channel ${channel.id}, ${JSON.stringify(
+          filteringOptions
+        )}`
+      )
+    }
+
+    // Wait for 50ms between queries to avoid hitting a rate limit
+    await pause(50)
+  }
 }

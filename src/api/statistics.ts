@@ -3,11 +3,12 @@ import {
   MessageableGuildChannel,
   ThreadableGuildChannel
 } from './types/channels'
-import { MessageFilteringOptions } from './types/message-filtering-options'
+import { DateFilteringOptions } from './types/date-filtering-options'
 import {
   fetchLogChannel,
   loadMessageableChannels,
   loadThreadableChannels,
+  loadThreadsFor,
   useThread
 } from './channels'
 import { loadMessagesFor } from './messages'
@@ -80,7 +81,7 @@ export async function postCountsAsRanking(
 
 export async function loadMessageStatistics(
   bot: Bot,
-  filteringOptions: MessageFilteringOptions
+  filteringOptions: DateFilteringOptions
 ) {
   const messageableChannels = await loadMessageableChannels(bot)
   const threadableChannels = await loadThreadableChannels(bot)
@@ -95,7 +96,7 @@ export async function loadMessageStatistics(
 
   const activeThreads = new Set<string>()
   const activeChannels = new Set<string>()
-  let threadCount = 0
+  let threadsChecked = 0
   let messageCount = 0
 
   const countMessages = async (
@@ -142,16 +143,8 @@ export async function loadMessageStatistics(
     const channelId = channel.id
     channels[channelId] = channel
 
-    const { threads: activeThreads } = await channel.threads.fetch()
-    const { threads: archiveThreads } = await channel.threads.fetch({
-      archived: {}
-    })
-
-    threadCount += activeThreads.size + archiveThreads.size
-
-    const threads = [...activeThreads.values(), ...archiveThreads.values()]
-
-    for (const thread of threads) {
+    for await (const thread of loadThreadsFor(channel, filteringOptions)) {
+      ++threadsChecked
       await countMessages(channelId, thread)
     }
   }
@@ -182,7 +175,7 @@ export async function loadMessageStatistics(
     totals: {
       activeTextChannels: activeChannels.size,
       textChannels: messageableChannels.length,
-      threads: threadCount,
+      threadsChecked: threadsChecked,
       activeThreads: activeThreads.size,
       messages: messageCount
     }
