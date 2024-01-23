@@ -2,7 +2,7 @@ import { EmbedBuilder, Message, PartialMessage } from 'discord.js'
 import { fetchLogChannel, useThread } from '../api/channels'
 import { Bot } from '../core/bot'
 import { events } from '../core/feature'
-import { logger } from '../core/utils'
+import { logger, replaceSpoilerHack } from '../core/utils'
 
 export default events({
   async messageDelete(bot, message) {
@@ -53,11 +53,14 @@ const logDeletedMessages = async (
 
     embed.setDescription(`
       **Message from <@${author?.id}> deleted in** <#${message.channel.id}>
-      ${message.content}
+      ${replaceSpoilerHack(message.content)}
     `)
   } else {
     const joinedMessages = messages
-      .map(message => `[<@${message.author?.id}>]: ${message.content}`)
+      .map(
+        message =>
+          `[<@${message.author?.id}>]: ${replaceSpoilerHack(message.content)}`
+      )
       .join('\n')
 
     embed.setDescription(`

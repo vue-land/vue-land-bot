@@ -9,7 +9,7 @@ import { isDeleted } from '../api/deletion-cache'
 import { getTrustedRoles } from '../api/roles'
 import { Bot } from '../core/bot'
 import { feature } from '../core/feature'
-import { isNormalUserMessage, logger } from '../core/utils'
+import { isNormalUserMessage, logger, replaceSpoilerHack } from '../core/utils'
 
 const recentMessages: { message: Message; receivedTime: number }[] = []
 
@@ -33,6 +33,12 @@ const containsDiscordInvite = (content: string) => {
   const withoutCode = stripCode(content)
 
   return withoutCode.includes('discord.gg/')
+}
+
+const containsSpoilerHack = (content: string) => {
+  const withoutCode = stripCode(content)
+
+  return withoutCode !== replaceSpoilerHack(withoutCode, '')
 }
 
 const isDuplicate = (content: string, newMessageContent: string) => {
@@ -78,7 +84,7 @@ const postLogMessage = async (
       `
         ${messageList.join('\n')}
         -----
-        ${message.content}
+        ${replaceSpoilerHack(message.content)}
       `
     )
     .setFooter({
@@ -150,6 +156,7 @@ const blockFor = (reason: string) => {
 const blockForBannedTags = blockFor('using banned tags')
 const blockForExcessiveLinks = blockFor('excessive links')
 const blockForExcessiveDiscordInvites = blockFor('excessive Discord invites')
+const blockForExcessiveSpoilerHacks = blockFor('excessive spoiler hacks')
 const blockForExcessiveDuplicates = blockFor('excessive duplicates')
 const blockForExcessivePosts = blockFor('excessive posts')
 
@@ -164,6 +171,10 @@ const logBannedTags = async (bot: Bot, messages: Message[]) => {
 
 const logDiscordInvite = async (bot: Bot, messages: Message[]) => {
   await postLogMessage(bot, messages, 'Discord invite')
+}
+
+const logSpoilerHack = async (bot: Bot, messages: Message[]) => {
+  await postLogMessage(bot, messages, 'Spoiler hack')
 }
 
 interface Rule {
@@ -205,6 +216,12 @@ const rules: Rule[] = [
     timeframe: 5,
     channelCount: 2,
     action: blockForExcessiveDiscordInvites
+  },
+  {
+    isBrokenBy: containsSpoilerHack,
+    timeframe: 5,
+    channelCount: 2,
+    action: blockForExcessiveSpoilerHacks
   },
   {
     isBrokenBy: isDuplicate,
@@ -259,6 +276,12 @@ const rules: Rule[] = [
     timeframe: 1, // Irrelevant as any use is logged
     channelCount: 1,
     action: logDiscordInvite
+  },
+  {
+    isBrokenBy: containsSpoilerHack,
+    timeframe: 1, // Irrelevant as any use is logged
+    channelCount: 1,
+    action: logSpoilerHack
   }
 ]
 

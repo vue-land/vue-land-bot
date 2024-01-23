@@ -69,6 +69,17 @@ export function isNormalUserMessage(
   )
 }
 
+// The spoiler hack hides parts of a message:
+// - https://www.reddit.com/r/discordapp/comments/uiohaz/someone_managed_to_ping_me_and_other_people_with/
+// It is used by spammers to hide invites or tags at the end of a message.
+// We need to remove it from any messages posted by the bot.
+export function replaceSpoilerHack(
+  messageContent: string | null,
+  replacement = '[...]'
+) {
+  return (messageContent ?? '').replace(/(\|\|\u200b\|\|)+/g, replacement)
+}
+
 // This may look complicated, but it just checks that the string is plausibly a date in the correct format. It's
 // intended to protect against mistakes during development.
 const DATE_STRING_RE = /^(2\d\d\d-[01]\d-[0123]\d)(?:$|T)/

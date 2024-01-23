@@ -81,7 +81,7 @@ export async function loadThreadableChannels(bot: Bot) {
 
   for (const channel of viewableChannels) {
     if (
-      (channel.isTextBased() || channel.type === ChannelType.GuildForum) &&
+      (channel.isTextBased() || channel.isThreadOnly()) &&
       !channel.isVoiceBased() &&
       channel.threads
     ) {
