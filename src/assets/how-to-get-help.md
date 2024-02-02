@@ -47,7 +47,7 @@ You should research your question before you ask. Search the web and read the re
 
 ---
 
-We aren't mind readers :brain:. A good question needs to make it clear what the problem is. We don't know what your application does or what you're expecting your code to do. Never describe the problem as 'it doesn't work'. Explain what you're trying to do and what is happening instead.
+We aren't mind readers :brain:. A good question needs to make it clear what the problem is. We don't know what your application does or what you're expecting your code to do. Never describe the problem as 'it doesn't work'. Explain what you're trying to do, what you're expecting to happen and what is happening instead.
 
 ---
 
@@ -112,14 +112,14 @@ Try to be realistic when asking a question. Questions that need an experienced d
 
 ## Other advice
 
-:one: Never `@` tag people unless they are already involved in answering your question.
-:two: The people helping you will usually be typing code directly into Discord. They probably haven't run it. Don't expect it to work perfectly. You need to study it and understand it, not just copy it.
-:three: Try to wait for a channel to go quiet before posting your question. If you ask in the middle of another conversation your question may just get lost.
-:four: Don't describe your question as 'urgent' or 'important' or anything else that implies your question should be given higher priority. You'll generally find that people are less likely to help you if you demand immediate assistance.
-:five: Don't post questions just before you need to rush off. Most questions will need further input from you before reaching a final answer.
-:six: Try to avoid asking questions when you're tired and/or frustrated. Give yourself time to calm down or come back to the problem after some sleep. The help channels are not the right place to vent your frustrations.
-:seven: If your question goes unanswered for several hours then feel free to bump it. Post a 'reply' to the original post, politely asking whether anyone is able to help. A question can easily get lost if there are lots of other questions being asked. Please be patient and don't keep asking the same question over and over again. If no-one is answering then it could be that your question isn't clear, or perhaps it's just that nobody knows the answer.
-:eight: Try to keep all conversations in the public channels rather than using DMs. DMs prevent other people from helping. You are more likely to receive bad advice or be targeted by a scammer if you use DMs.
+:one: Try to wait for a channel to go quiet before posting your question. If you ask in the middle of another conversation your question may just get lost.
+:two: Don't describe your question as 'urgent' or 'important' or anything else that implies your question should be given higher priority. You'll generally find that people are less likely to help you if you demand immediate assistance.
+:three: Try to ask the whole question in one go, rather than splitting it up into lots of short messages. Posting separate messages saying 'Hello' or 'I have a question' just disrupts other conversations without providing any meaningful information about your own question.
+:four: Don't post questions just before you need to rush off. Most questions will need further input from you before reaching a final answer.
+:five: Try to avoid asking questions when you're tired and/or frustrated. Give yourself time to calm down or come back to the problem after some sleep. The help channels are not the right place to vent your frustrations.
+:six: If your question goes unanswered for several hours then feel free to bump it. Post a 'reply' to the original post, politely asking whether anyone is able to help. A question can easily get lost if there are lots of other questions being asked. Please be patient and don't keep asking the same question over and over again. If no-one is answering then it could be that your question isn't clear, or perhaps it's just that nobody knows the answer.
+:seven: Try to keep all conversations in the public channels rather than using DMs. DMs prevent other people from helping. You are more likely to receive bad advice or be targeted by a scammer if you use DMs.
+:eight: The people helping you will usually be typing code directly into Discord. They probably haven't run it. Don't expect it to work perfectly. You need to study it and understand it, not just copy it.
 
 ---
 

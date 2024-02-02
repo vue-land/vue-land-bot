@@ -8,20 +8,18 @@ Vuejs Developers: <https://www.facebook.com/groups/vuejsdevelopers>
 
 ---
 
-## Boilerplates
+## Vue meta-frameworks
 
-Gridsome: <https://discord.gg/22ysRd3>
 Ionic: <https://ionic.link/discord>
 Nuxt: <https://discord.gg/Y6HGQeP>
 Quasar: <https://discord.gg/3yd2hUd>
-Saber: <https://discordapp.com/invite/22TBk7H>
-VueFront: <https://discord.gg/C9vcTCQ>
 Vue-Storefront: <https://discord.vuestorefront.io/>
 
 ---
 
 ## UI libraries
 
+Ark UI / Zag.js: <https://zagjs.com/discord>
 Bootstrap-Vue: <https://discord.com/invite/B8pcyCd>
 Buefy: <https://discordapp.com/invite/ZkdFJMr>
 Chakra UI: <https://discord.gg/jvsvfQSjhv>
@@ -31,6 +29,7 @@ Iview: <https://gitter.im/iview/iview>
 Naive UI: <https://discord.gg/Pqv7Mev5Dd>
 Oruga UI: <https://discord.gg/9kPxPUXzRZ>
 PrimeVue: <https://discord.gg/gzKFYnpmCY>
+Quasar: <https://discord.gg/3yd2hUd>
 StoreFront UI: <https://discord.com/invite/TJpdzzN6q5>
 Vue Material: <https://discord.gg/CyfB6hC>
 VueSax: <https://discord.gg/2kHwpfe>
@@ -51,7 +50,7 @@ Vue Formulate: <https://discord.gg/NTYTVm5yFp>
 CodeSandbox: <https://discord.gg/5BpufEP7MH>
 Storybook: <https://discord.gg/NzrwbJ5>
 Vite: <https://chat.vitejs.dev/> and <#709030686945968188>
-Volar: <https://discord.gg/d5TqRH8Tya>
+Volar.js Dev: <https://discord.gg/7qfYWRrUAM>
 
 ---
 
@@ -83,6 +82,7 @@ Angular: <https://discord.gg/angular>
 Ember: <https://discord.gg/emberjs>
 Gatsby: <https://discord.gg/5tdtA9k>
 Reactiflux: <https://discord.gg/gtan9Ju>
+Solid: <https://discord.com/invite/solidjs>
 Svelte: <https://discord.gg/H87FfaS>
 
 ---
@@ -163,5 +163,4 @@ Vitest: <https://chat.vitest.dev/>
 ## Local Meetup chats
 
 Berlin: <https://discord.gg/PRK2y2U>
-Kyiv: <https://t.me/vuejs_kyiv>
 Seattle: <https://discord.gg/Wdvr4E9>
