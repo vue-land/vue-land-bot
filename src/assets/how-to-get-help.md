@@ -110,6 +110,20 @@ Try to be realistic when asking a question. Questions that need an experienced d
 
 ---
 
+## Pings
+
+Do not use `@` mentions to ping people who are not already actively involved in solving your current problem.
+
+Likewise, don't use replies to old messages or unrelated conversations just to get someone's attention.
+
+Answering questions is a collaborative effort. You shouldn't target individuals when asking a question. In particular, don't ping library maintainers or people who have been helpful in the past.
+
+You won't be able to use `@everyone` or `@here` pings, but you shouldn't be trying to use them anyway.
+
+You will find that people are unwilling to help you if you abuse pings. You may also be banned from the server.
+
+---
+
 ## Other advice
 
 :one: Try to wait for a channel to go quiet before posting your question. If you ask in the middle of another conversation your question may just get lost.
