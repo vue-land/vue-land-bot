@@ -3,7 +3,7 @@
 ## Ground rules
 
 :one: Be respectful: <https://vuejs.org/about/coc.html>
-:two: Personal attacks, abuse, bullying, harassment, trolling, hate speech, etc. will not be tolerated
+:two: Personal attacks, threats, abuse, bullying, harassment, trolling, hate speech, etc. will not be tolerated
 :three: No spam. If it looks like spam, it's spam
 :four: Post messages in one channel only - don't cross-post between channels
 :five: Do not use `@` mentions unless you are responding to someone
@@ -16,6 +16,7 @@ You should also read <#854729996312641536> before posting questions.
 
 * Rules :one:, :two: & :three: also apply to DMs
 * Don't use DMs to ask for help with your code: use the public channels
+* Use the public channels when answering questions, not DMs
 * Don't send DMs asking for work
 
 ## Moderation/admin channels
