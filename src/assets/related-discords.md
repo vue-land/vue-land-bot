@@ -22,7 +22,7 @@ Vue-Storefront: <https://discord.vuestorefront.io/>
 
 Ark UI / Zag.js: <https://zagjs.com/discord>
 Bootstrap-Vue: <https://discord.com/invite/B8pcyCd>
-Buefy: <https://discordapp.com/invite/ZkdFJMr>
+Buefy: <https://discord.gg/uj3GaBqJTe>
 Chakra UI: <https://discord.gg/jvsvfQSjhv>
 Inkline: <https://discord.gg/v7RbKcTSjQ>
 Naive UI: <https://discord.gg/Pqv7Mev5Dd>
@@ -48,6 +48,7 @@ CodeSandbox: <https://discord.gg/5BpufEP7MH>
 Storybook: <https://discord.gg/NzrwbJ5>
 Vite: <https://chat.vitejs.dev/> and <#709030686945968188>
 Volar.js Dev: <https://discord.gg/7qfYWRrUAM>
+Webpack: <https://discord.gg/5sxFZPdx2k>
 
 ---
 
@@ -69,7 +70,6 @@ freeCodeCamp: <https://discord.gg/KVUmVXA>
 The Programmer's Hangout: <https://discord.gg/programming>
 UX/UI: <https://discord.gg/2uSraS9>
 Webdev / Webdesign: <https://discord.gg/web>
-World of Coding: <https://discord.gg/program>
 
 ---
 
@@ -96,14 +96,15 @@ UIKit: <https://discord.gg/NEt4Pv7>
 Adonis: <https://discord.gg/k5myGAz>
 Elixir: <https://discord.gg/elixir>
 Feathers: <https://discord.gg/qa8kez8QBx>
+Inertia.js: <https://discord.gg/inertiajs>
 Laravel: <https://discord.gg/E6EKnWS>
 Meteor: <https://discord.gg/255GbrZ>
 Nest: <https://discord.gg/G7Qnnhy>
 Python: <https://discord.gg/python>
-Sails: <https://discord.gg/gbJZuNm>
 ReasonML: <https://discord.gg/reasonml>
 Ruby + RoR: <https://discord.gg/ad2acQFtkh>
 Rust: <https://discord.gg/aXRWCCE>
+Sails: <https://discord.gg/ue8NcfH>
 
 ---
 
@@ -131,7 +132,6 @@ Tauri: <https://discord.gg/KwA62Jh>
 
 ## GraphQL
 
-Apollo: <https://discord.gg/graphos>
 GraphQL: <https://discord.graphql.org/>
 HasuraHQ: <https://discord.gg/vBPpJkS>
 Relay: <https://discord.gg/Kb3SFkUeQt>
@@ -142,7 +142,7 @@ Relay: <https://discord.gg/Kb3SFkUeQt>
 
 Cypress: <https://discord.gg/cMjUZg7>
 Jest: <https://discord.gg/reactiflux>
-Playwright: <https://discord.gg/playwright>
+Playwright: <https://discord.gg/playwright-807756831384403968>
 Vitest: <https://chat.vitest.dev/>
 
 ---
@@ -158,4 +158,3 @@ Vitest: <https://chat.vitest.dev/>
 ## Local Meetup chats
 
 Berlin: <https://discord.gg/PRK2y2U>
-Seattle: <https://discord.gg/Wdvr4E9>

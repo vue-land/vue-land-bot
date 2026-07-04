@@ -16,7 +16,7 @@ export async function checkInvitesInChannel(channel: MessageableGuildChannel) {
 
   for (const line of lines) {
     const inviteUrls =
-      line.match(/https:\/\/discord(app)?\.(com|gg)\/[\w\/]+/g) || []
+      line.match(/https:\/\/discord(app)?\.(com|gg)\/[-\w\/]+/g) || []
 
     for (const inviteUrl of inviteUrls) {
       if (checked.has(inviteUrl)) {
